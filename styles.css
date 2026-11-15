@@ -2906,3 +2906,308 @@ html:not(.js) .journey__kit {
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* ---- Brief additions: hero CTAs, Who, What I do, method extras ---- */
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__tags li {
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--grid);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+}
+
+.who__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.who__story p {
+  max-width: var(--measure);
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+
+.who__story p + p {
+  margin-top: 1rem;
+}
+
+.who__quote,
+.method__signature {
+  margin: 1.5rem 0 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 4px solid var(--signal);
+  font-size: var(--step-1);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.idcard {
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--grid);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.idcard > div {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 1rem;
+  padding: 0.8rem 0;
+}
+
+.idcard > div + div {
+  border-top: 1px solid var(--grid);
+}
+
+.idcard dt {
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  font-weight: 650;
+}
+
+.idcard dd {
+  margin: 0;
+}
+
+.traits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.traits li {
+  padding: 1rem 1.1rem;
+  border-top: 2px solid var(--band);
+  color: var(--ink-soft);
+}
+
+.traits strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+}
+
+.triad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: triad;
+}
+
+.triad li {
+  counter-increment: triad;
+  padding: 0.9rem 1.1rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--grid);
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+}
+
+.triad li::before {
+  content: counter(triad);
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.triad strong {
+  color: var(--ink);
+}
+
+.pillar__areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pillar__areas li {
+  padding: 0.2rem 0.65rem;
+  background: var(--paper);
+  border: 1px solid var(--grid);
+  border-radius: 999px;
+  font-size: 0.875rem;
+}
+
+.pillar__line {
+  margin-top: 1rem;
+}
+
+.pillar__line span {
+  display: block;
+  color: var(--signal);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.labels {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.labels .talk__badge {
+  margin-right: 0.6rem;
+}
+
+.talk__badge--wip {
+  background: var(--ink-soft);
+}
+
+.method__communicate {
+  max-width: calc(var(--measure) + 6rem);
+  margin-top: 2.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--paper-raised);
+  border: 1px dashed var(--band);
+  border-radius: var(--radius);
+}
+
+.method__signature {
+  max-width: calc(var(--measure) + 6rem);
+  margin-top: 2rem;
+}
+
+.govern {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.25rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: gov;
+}
+
+.govern li {
+  counter-increment: gov;
+  padding: 0.3rem 0.7rem;
+  background: var(--paper);
+  border: 1px solid var(--band);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.govern li:not(:last-child)::after {
+  content: "→";
+  margin-left: 0.7rem;
+  color: var(--signal);
+}
+
+.govern__note {
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+
+.habits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 2rem;
+  max-width: 48rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.habits li {
+  padding: 0.5rem 0 0.5rem 1.1rem;
+  border-bottom: 1px solid var(--grid);
+  position: relative;
+}
+
+.habits li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--signal);
+}
+
+.skill-groups em {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.5rem;
+  border: 1px solid var(--grid);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 52rem) {
+  .who__grid,
+  .triad,
+  .traits {
+    grid-template-columns: 1fr;
+  }
+
+  .habits {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 30rem) {
+  .idcard > div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}
+
+@media (max-width: 46rem) {
+  /* Leave room for the swap hint under the compact photo card */
+  .portrait {
+    margin-bottom: 2.5rem;
+  }
+
+  .portrait__hint {
+    top: calc(100% + 1.1rem);
+    text-align: left;
+  }
+}

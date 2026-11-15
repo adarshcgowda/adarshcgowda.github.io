@@ -497,6 +497,33 @@
     });
   }
 
+  // What I do: pick a capability to read it, with arrow keys too
+
+  function initPillars() {
+    const root = $("[data-pillars]");
+    if (!root) return;
+    const tabs = $$("[role=tab]", root);
+    const panels = $$("[role=tabpanel]", root);
+    const select = (i, focus = false) => {
+      tabs.forEach((t, k) => {
+        t.setAttribute("aria-selected", String(k === i));
+        t.tabIndex = k === i ? 0 : -1;
+      });
+      panels.forEach((p, k) => { p.hidden = k !== i; });
+      if (focus) tabs[i].focus();
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => select(i));
+      tab.addEventListener("keydown", (e) => {
+        const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (!step) return;
+        e.preventDefault();
+        select((i + step + tabs.length) % tabs.length, true);
+      });
+    });
+    select(0);
+  }
+
   initProgress();
   initNav();
   initGame();
@@ -508,4 +535,5 @@
   initViews();
   initTilt();
   initPortraitSwap();
+  initPillars();
 })();
