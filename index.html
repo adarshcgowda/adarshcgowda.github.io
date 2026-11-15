@@ -48,9 +48,12 @@
           <p class="hero__lede">I build the checks, alerts and dashboards that make data trustworthy enough to act on. I’ve been doing it since 2019, across automotive, manufacturing and food delivery.</p>
         </div>
         <figure class="portrait">
+          <!-- Full-length on wide screens; on phones the headshot keeps the face readable -->
           <picture>
-            <source srcset="assets/portrait.webp" type="image/webp">
-            <img class="portrait__img" src="assets/portrait.jpg" width="640" height="800" alt="Adarsh Chikkaswamygowda in a navy suit and tie" fetchpriority="high">
+            <source media="(max-width: 46rem)" srcset="assets/portrait.webp" type="image/webp">
+            <source media="(max-width: 46rem)" srcset="assets/portrait.jpg">
+            <source srcset="assets/portrait-full.webp" type="image/webp">
+            <img class="portrait__img" src="assets/portrait-full.jpg" width="600" height="1152" alt="Adarsh Chikkaswamygowda in a navy suit and tie" fetchpriority="high">
           </picture>
           <figcaption class="portrait__tag"><span class="portrait__dot" aria-hidden="true"></span>Open to senior analyst roles</figcaption>
         </figure>
