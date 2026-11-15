@@ -41,130 +41,31 @@
     sections.forEach((s) => observer.observe(s));
   }
 
-  // Prologue: find the month that's wrong
-
-  function parsePoints(d) {
-    return d.match(/-?\d+(?:\.\d+)?,-?\d+(?:\.\d+)?/g).map((pair) => pair.split(",").map(Number));
-  }
+  // Prologue: the same line, by eye and against its own baseline
 
   function initGame() {
     const fig = $("[data-game]");
     if (!fig) return;
-    const svg = $("svg", fig);
-    const tip = $(".game__tip", fig);
     const status = $("[data-game-status]", fig);
-    const hintButton = $("[data-game-hint]", fig);
-    const revealButton = $("[data-game-reveal]", fig);
-    const actions = $(".game__actions", fig);
-
-    const points = parsePoints($(".hero-chart__line", svg).getAttribute("d"));
-    const band = parsePoints($(".hero-chart__band", svg).getAttribute("d"));
-    const n = points.length;
-    const top = band.slice(0, n);
-    const bottom = band.slice(n).reverse();
-    const answer = points.findIndex(([, y], i) => y > bottom[i][1] || y < top[i][1]);
-
-    // Illustrative units: higher on the chart means a bigger number
-    const value = (y) => Math.round((250 - y) * 6);
-    const range = (i) => `${value(bottom[i][1])}–${value(top[i][1])}`;
-
-    let wrong = 0;
-    let done = false;
-
-    const make = (tag, attrs, parent) => {
-      const el = document.createElementNS(SVG_NS, tag);
-      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
-      parent.appendChild(el);
-      return el;
+    const buttons = $$("[data-view]", fig);
+    const copy = {
+      eye: "Illustrative series. By eye, one dip is easy to explain away.",
+      sys: "<strong>With a baseline.</strong> Month 19 dropped to 384 when 600–912 was expected. Spotting it by eye works for one chart. I build systems that do it automatically across 24 countries and 20+ platforms, and attach a reason to every flag.",
     };
-
-    const guesses = make("g", { class: "game__guesses" }, svg);
-    const guide = make("g", { class: "game__guide" }, svg);
-    const guideLine = make("line", { y1: 0, y2: 250 }, guide);
-    const guideDot = make("circle", { r: 7 }, guide);
-    const hits = make("g", { class: "game__hits" }, svg);
-
-    const setStatus = (html) => { status.innerHTML = html; };
-
-    const showTip = (i) => {
-      const [x, y] = points[i];
-      guideLine.setAttribute("x1", x);
-      guideLine.setAttribute("x2", x);
-      guideDot.setAttribute("cx", x);
-      guideDot.setAttribute("cy", y);
-      guide.classList.add("is-visible");
-      const revealed = fig.classList.contains("is-revealed");
-      tip.textContent = `Month ${i + 1}: ${value(y)}` + (revealed ? ` · expected ${range(i)}` : "");
-      tip.style.left = `${x / 10}%`;
-      tip.style.top = `${y / 2.5}%`;
-      tip.hidden = false;
-    };
-
-    const hideTip = () => {
-      guide.classList.remove("is-visible");
-      tip.hidden = true;
-    };
-
-    const revealRange = () => fig.classList.add("is-revealed");
-
-    const finish = (foundIt) => {
-      done = true;
-      revealRange();
-      fig.classList.add("is-found");
-      hits.remove();
-      hideTip();
-      actions.innerHTML = '<a class="chip-button" href="#cases">See how I build these</a>';
-      setStatus(
-        (foundIt ? `<strong>Found it.</strong> Month ${answer + 1} dropped to ${value(points[answer][1])} when ${range(answer)} was expected. ` : `<strong>Month ${answer + 1}.</strong> It dropped to ${value(points[answer][1])} when ${range(answer)} was expected. `) +
-        "Spotting it by eye works for one chart. I build systems that do it automatically across 24 countries and 20+ platforms, and attach a reason to every flag."
-      );
-    };
-
-    const guess = (i) => {
-      if (done) return;
-      if (i === answer) return finish(true);
-      wrong += 1;
-      const [x, y] = points[i];
-      make("circle", { cx: x, cy: y, r: 7 }, guesses);
-      const inRange = `Month ${i + 1} is inside its expected range (${range(i)}).`;
-      if (fig.classList.contains("is-revealed")) {
-        setStatus(`${inRange} Look for the point outside the shaded band.`);
-      } else if (wrong >= 2) {
-        revealRange();
-        setStatus(`${inRange} Here’s the expected range. That’s the trick: judge each month against its own baseline, not by eye.`);
-        hintButton.hidden = true;
-      } else {
-        setStatus(`Not that one. ${inRange} Try again, or ask for the expected range.`);
-      }
-    };
-
-    points.forEach(([x, y], i) => {
-      const hit = make("rect", {
-        x: x - 20, y: 0, width: 40, height: 250,
-        tabindex: 0, role: "button",
-        "aria-label": `Month ${i + 1}, value ${value(y)}`,
-      }, hits);
-      hit.addEventListener("pointerenter", () => showTip(i));
-      hit.addEventListener("focus", () => showTip(i));
-      hit.addEventListener("pointerleave", hideTip);
-      hit.addEventListener("blur", hideTip);
-      hit.addEventListener("click", () => guess(i));
-      hit.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          guess(i);
-        }
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const sys = button.dataset.view === "sys";
+        fig.classList.toggle("is-revealed", sys);
+        fig.classList.toggle("is-found", sys);
+        buttons.forEach((b) => {
+          const on = b === button;
+          b.classList.toggle("is-selected", on);
+          b.setAttribute("aria-pressed", String(on));
+        });
+        status.innerHTML = copy[sys ? "sys" : "eye"];
       });
     });
-
-    hintButton.addEventListener("click", () => {
-      revealRange();
-      hintButton.hidden = true;
-      setStatus("The shaded band is what each month should look like, given its recent history. Now which month is wrong?");
-    });
-    revealButton.addEventListener("click", () => finish(false));
-
-    setStatus("Hover or tap the chart to read each month, then pick the one you’d check first.");
+    status.innerHTML = copy.eye;
   }
 
   // Snapshot: numbers count up once, when they first come into view

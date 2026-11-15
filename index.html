@@ -85,10 +85,10 @@
 
       <figure class="hero-chart wrap" data-game>
         <div class="game__bar">
-          <p class="game__prompt"><strong>Try it.</strong> One of these months is wrong. Can you find it?</p>
-          <div class="game__actions">
-            <button class="chip-button" type="button" data-game-hint>Show the expected range</button>
-            <button class="chip-button chip-button--quiet" type="button" data-game-reveal>Just show me</button>
+          <p class="game__prompt"><strong>Try it.</strong> Is one of these months wrong? Look first, then switch on a baseline.</p>
+          <div class="game__actions" role="group" aria-label="Chart view">
+            <button class="chip-button is-selected" type="button" aria-pressed="true" data-view="eye">By eye</button>
+            <button class="chip-button" type="button" aria-pressed="false" data-view="sys">With a baseline</button>
           </div>
         </div>
         <div class="hero-chart__plot">
@@ -106,9 +106,8 @@
               <text x="712" y="237" text-anchor="end" class="hero-chart__note">Outside its 6-month baseline. Worth a look.</text>
             </g>
           </svg>
-          <div class="game__tip" role="presentation" hidden></div>
         </div>
-        <figcaption class="hero-chart__caption" aria-live="polite" data-game-status>Illustrative series. The shaded band is the expected range; anything outside it gets a flag and a reason.</figcaption>
+        <figcaption class="hero-chart__caption" aria-live="polite" data-game-status>Illustrative series. By eye, one dip is easy to explain away.</figcaption>
       </figure>
 
       <!-- Pick your path: three ways through the page, depending on who's reading -->
