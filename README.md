@@ -1,28 +1,28 @@
 # Portfolio — Adarsh Chikkaswamygowda
 
-Single-page portfolio. Plain HTML + CSS, no build step, no frameworks, no trackers.
+Single-page portfolio told as a story: a prologue game, a scroll-driven career journey,
+step-through case files and an interactive method. Plain HTML, CSS and a little
+JavaScript, no build step, no frameworks, no trackers.
 
 ```
-index.html                         all content
+index.html                         all content (complete and readable without JavaScript)
 styles.css                         all styling and animation
+script.js                          interactive layer: game, journey, case stepper, method picker
 assets/fonts/instrument-sans-latin.woff2   only font (Instrument Sans, SIL OFL)
 ```
 
-Total weight is about 70 KB (budget: under 300 KB).
+Total weight is about 90 KB plus the resume PDF (budget: under 300 KB).
 
 ## Preview
 
 Open `index.html` in a browser, or run `python3 -m http.server 8000` in this folder
 and visit http://localhost:8000.
 
-Add `?draft` to the URL (`index.html?draft`) to outline every placeholder in red.
-
 ## Before sharing (pre-launch checklist)
 
 - [x] Projects in `#projects` are tagged "In progress"; add a link and remove the tag as each one ships
 - [x] Add the resume PDF at `assets/Adarsh_Chikkaswamygowda_Resume.pdf`
 - [x] Remove the `<meta name="robots" content="noindex, nofollow">` line in `index.html`
-- [ ] Check `?draft` shows no red outlines
 - [ ] Lighthouse (Chrome DevTools > Lighthouse > Mobile): aim for 95+ in every category
 - [ ] Check on a real phone
 
@@ -34,10 +34,11 @@ Add `?draft` to the URL (`index.html?draft`) to outline every placeholder in red
 
 ## Performance rules
 
-- Animate only `transform` and `opacity`.
-- One page-load moment (the hero chart draws in) plus the scroll-linked timeline spine. Nothing else moves on its own.
-- Inline SVG for charts. No chart libraries on this page.
-- Reduced-motion users get a static page automatically.
+- Animate `transform` and `opacity` (the journey route also animates `stroke-dashoffset` on one small SVG).
+- One page-load moment (the hero chart draws in). Everything else moves only in response to scrolling or a click.
+- Inline SVG for charts. No chart or animation libraries.
+- Every interactive rule sits under `.js`, so without JavaScript the page is static and complete.
+- Reduced-motion users get the same interactions with motion switched off.
 
 ## Deploy to GitHub Pages (from a personal laptop and personal GitHub account)
 
