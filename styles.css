@@ -366,6 +366,79 @@ button {
   box-shadow: var(--shadow);
 }
 
+/* Two photos stacked like a deck: the front card is in the flow, the other waits behind it */
+
+.portrait__swap {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.portrait__swap:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 6px;
+  border-radius: 12px;
+}
+
+.portrait__card {
+  --tx: 0rem;
+  --ty: 0rem;
+  --r: 0deg;
+  position: relative;
+  display: block;
+  z-index: 2;
+  transform: translateZ(10px) translate(var(--tx), var(--ty)) rotate(var(--r));
+  transform-origin: 50% 90%;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease, z-index 0s 0.2s;
+}
+
+.portrait__card picture {
+  display: block;
+}
+
+.portrait__card--grad {
+  position: absolute;
+  inset: 0;
+}
+
+.portrait__card--grad .portrait__img {
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+
+/* Whichever card is behind peeks out at the top left, tilted and dimmed */
+.portrait[data-front="pro"] .portrait__card--grad,
+.portrait[data-front="grad"] .portrait__card--pro {
+  --tx: -1.1rem;
+  --ty: -0.6rem;
+  --r: -5deg;
+  z-index: 1;
+  filter: brightness(0.82);
+}
+
+.portrait__hint {
+  position: absolute;
+  top: calc(100% + 1.6rem);
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait__card { transition: none; }
+}
+
 .portrait__tag {
   position: absolute;
   left: -1.75rem;
@@ -411,11 +484,6 @@ button {
 
 .js .portrait[data-tilt]::before {
   transform: translateZ(-40px);
-}
-
-.js .portrait[data-tilt] picture {
-  display: block;
-  transform: translateZ(10px);
 }
 
 .js .portrait[data-tilt] .portrait__tag {

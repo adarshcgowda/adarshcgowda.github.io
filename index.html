@@ -48,16 +48,24 @@
           <h1 class="hero__title" id="hero-title">I find the number that’s wrong before anyone makes a decision on it.</h1>
           <p class="hero__lede">I build the checks, alerts and dashboards that make data trustworthy enough to act on. I’ve been doing it since 2019, across automotive, manufacturing and food delivery.</p>
         </div>
-        <figure class="portrait" data-tilt>
-          <!-- Full-length on wide screens; on phones the headshot keeps the face readable -->
-          <picture>
-            <source media="(max-width: 46rem)" srcset="assets/portrait.webp" type="image/webp">
-            <source media="(max-width: 46rem)" srcset="assets/portrait.jpg">
-            <source srcset="assets/portrait-full.webp" type="image/webp">
-            <img class="portrait__img" src="assets/portrait-full.jpg" width="600" height="1152" alt="Adarsh Chikkaswamygowda in a navy suit and tie" fetchpriority="high">
-          </picture>
+        <figure class="portrait" data-tilt data-front="pro">
+          <button class="portrait__swap" type="button" data-swap aria-pressed="false" aria-label="Swap photo: show the graduation portrait">
+            <!-- Professional photo in front; the graduation photo waits behind it until clicked -->
+            <span class="portrait__card portrait__card--pro">
+              <picture>
+                <source media="(max-width: 46rem)" srcset="assets/portrait.webp" type="image/webp">
+                <source media="(max-width: 46rem)" srcset="assets/portrait.jpg">
+                <source srcset="assets/portrait-full.webp" type="image/webp">
+                <img class="portrait__img" src="assets/portrait-full.jpg" width="600" height="1152" alt="Adarsh Chikkaswamygowda in a navy suit and tie" fetchpriority="high">
+              </picture>
+            </span>
+            <span class="portrait__card portrait__card--grad">
+              <img class="portrait__img" src="assets/portrait-graduation.jpg" width="800" height="1066" loading="lazy" alt="Adarsh Chikkaswamygowda in a graduation gown and cap">
+            </span>
+          </button>
           <span class="portrait__glare" aria-hidden="true"></span>
           <figcaption class="portrait__tag"><span class="portrait__dot" aria-hidden="true"></span>Open to senior analyst roles</figcaption>
+          <span class="portrait__hint" aria-hidden="true">Click the photo to swap</span>
         </figure>
       </div>
 

@@ -481,6 +481,22 @@
     area.addEventListener("pointerup", (e) => { if (e.pointerType === "touch") reset(); });
   }
 
+  // Hero: click the photo to swap between the professional and graduation portraits
+
+  function initPortraitSwap() {
+    const card = $("[data-tilt]");
+    const btn = card && $("[data-swap]", card);
+    if (!btn) return;
+    btn.addEventListener("click", () => {
+      const toGrad = card.dataset.front === "pro";
+      card.dataset.front = toGrad ? "grad" : "pro";
+      btn.setAttribute("aria-pressed", String(toGrad));
+      btn.setAttribute("aria-label", toGrad ? "Swap photo: show the professional portrait" : "Swap photo: show the graduation portrait");
+      const hint = $(".portrait__hint", card);
+      if (hint) hint.hidden = true;
+    });
+  }
+
   initProgress();
   initNav();
   initGame();
@@ -491,4 +507,5 @@
   initFlips();
   initViews();
   initTilt();
+  initPortraitSwap();
 })();
