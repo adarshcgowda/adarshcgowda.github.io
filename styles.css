@@ -3211,3 +3211,40 @@ html:not(.js) .journey__kit {
     text-align: left;
   }
 }
+
+
+/* ---- Walker placard, toolkit logos, ZF photo ---- */
+
+.walker__pole {
+  stroke: #aab6c6;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.walker__placard {
+  pointer-events: none;
+}
+
+.journey__kit li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.kit__logo {
+  flex: none;
+  width: 0.95rem;
+  height: 0.95rem;
+  padding: 1.5px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.chapter__photo--pro {
+  width: min(100%, 15rem);
+  transform: none;
+}
+
+.chapter__photo--pro:hover {
+  transform: translateY(-2px);
+}

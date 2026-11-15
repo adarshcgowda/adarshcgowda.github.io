@@ -211,6 +211,22 @@
     const kit = $("[data-journey-tools]", root);
     const toolsAt = chapters.map((c) => c.dataset.tools.split(",").map((t) => t.trim()).filter(Boolean));
     const total = road.getTotalLength();
+
+    // Logos for the toolkit chips (tools without a logo stay text-only), and which tools count as AI
+    const LOGO = {
+      "Excel": ["microsoftexcel"], "R": ["r"], "Python": ["python"], "Power BI": ["powerbi"],
+      "scikit-learn": ["scikitlearn"], "SQL Server": ["microsoftsqlserver"], "Tableau": ["tableau"],
+      "pandas": ["pandas"], "Flask": ["flask"], "Slack alerting": ["slack"],
+      "AI fundamentals": ["ai"], "AI coding agents": ["cursor", "claude"],
+    };
+    const AI_TOOLS = new Set(["AI fundamentals", "AI coding agents", "scikit-learn", "Segmentation"]);
+
+    // What the walker carries on the way to each stop
+    const CARRY = { 1: ["de"], 2: ["zf", "hannover"], 3: ["srh"], 4: ["tesla"], 5: ["in", "ubereats"] };
+    const BADGE_W = { de: 34, in: 34, zf: 34, srh: 34, tesla: 34, ubereats: 34, hannover: 64 };
+    const placard = $("[data-placard]", root);
+    const placardItems = $("[data-placard-items]", placard);
+    let placardFor = -1;
     let current = -1;
 
     // Path length at each stop, found by walking the road once.
@@ -252,12 +268,38 @@
       roadLabel.textContent = stopDots[i].dataset.name;
       place.textContent = chapters[i].dataset.place;
       question.textContent = `“${chapters[i].dataset.question}”`;
-      kit.replaceChildren(...toolsAt.slice(0, i + 1).flatMap((tools, k) => tools.map((tool) => {
+      const chips = toolsAt.slice(0, i + 1).flatMap((tools, k) => tools.map((tool) => ({ tool, fresh: k === i })));
+      chips.sort((a, b) => AI_TOOLS.has(b.tool) - AI_TOOLS.has(a.tool));
+      kit.replaceChildren(...chips.map(({ tool, fresh }) => {
         const li = document.createElement("li");
-        li.textContent = tool;
-        if (k === i) li.className = "is-new";
+        (LOGO[tool] || []).forEach((name) => {
+          const img = document.createElement("img");
+          img.className = "kit__logo";
+          img.src = `assets/logos/${name}.svg`;
+          img.alt = "";
+          img.width = img.height = 14;
+          li.append(img);
+        });
+        li.append(tool);
+        if (fresh) li.className = "is-new";
         return li;
-      })));
+      }));
+    };
+
+    const setPlacard = (dest) => {
+      if (dest === placardFor) return;
+      placardFor = dest;
+      placardItems.replaceChildren();
+      const names = CARRY[dest] || [];
+      const gap = 4;
+      let x = -(names.reduce((s, n) => s + BADGE_W[n], 0) + gap * (names.length - 1)) / 2;
+      names.forEach((n) => {
+        const use = document.createElementNS(SVG_NS, "use");
+        use.setAttribute("href", `#badge-${n}`);
+        use.setAttribute("x", x + BADGE_W[n] / 2);
+        placardItems.append(use);
+        x += BADGE_W[n] + gap;
+      });
     };
 
     // Where the walker is: how far the middle of the screen has travelled between chapter centres.
@@ -277,6 +319,12 @@
       flip.setAttribute("transform", `scale(${dir * 1.3},1.3)`);
       walker.querySelector(".walker__shadow").setAttribute("cx", 0);
       pose(L / 9);
+
+      // Carry the next stop's flag or logo while walking towards it; fade it in and out at the stops
+      const travelling = next > i && mid >= centres[0];
+      setPlacard(travelling ? next : -1);
+      const fade = travelling && CARRY[next] ? Math.min(1, frac / 0.12, (1 - frac) / 0.12) : 0;
+      placard.setAttribute("opacity", Math.max(0, fade).toFixed(2));
 
       // The single label rides beside the walker, on whichever side has room.
       const right = pos.x < 160;

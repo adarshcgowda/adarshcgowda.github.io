@@ -300,6 +300,16 @@
         <div class="journey__layout">
           <aside class="journey__panel" aria-hidden="true">
             <svg class="route" viewBox="0 0 320 470">
+              <defs>
+                <!-- Badges the walker carries between stops. Flags are exact; ZF and SRH are simplified marks. -->
+                <g id="badge-de"><rect x="-17" y="-12" width="34" height="8" fill="#000"/><rect x="-17" y="-4" width="34" height="8" fill="#DD0000"/><rect x="-17" y="4" width="34" height="8" fill="#FFCE00"/></g>
+                <g id="badge-in"><rect x="-17" y="-12" width="34" height="8" fill="#FF9933"/><rect x="-17" y="-4" width="34" height="8" fill="#fff"/><rect x="-17" y="4" width="34" height="8" fill="#138808"/><circle r="3" fill="none" stroke="#000080" stroke-width="0.9"/></g>
+                <g id="badge-zf"><rect x="-17" y="-12" width="34" height="24" rx="3" fill="#fff"/><circle r="8.5" fill="none" stroke="#1b365d" stroke-width="1.8"/><text y="3.4" text-anchor="middle" font-size="9" font-weight="800" fill="#1b365d" font-family="Arial,sans-serif">ZF</text></g>
+                <g id="badge-hannover"><rect x="-32" y="-12" width="64" height="24" rx="3" fill="#fff"/><path d="M-26,-6a3.4,3.4 0 1 1 6.8,0c0,2.6-3.4,6.2-3.4,6.2s-3.4-3.6-3.4-6.2z" fill="#E0457B"/><circle cx="-22.6" cy="-6" r="1.2" fill="#fff"/><text x="-15" y="3.2" font-size="7.4" font-weight="700" fill="#1b2a41" font-family="Arial,sans-serif">Hannover</text></g>
+                <g id="badge-srh"><rect x="-17" y="-12" width="34" height="24" rx="3" fill="#fff"/><text y="3.6" text-anchor="middle" font-size="10.5" font-weight="800" fill="#E2681E" font-family="Arial,sans-serif">SRH</text></g>
+                <g id="badge-tesla"><rect x="-17" y="-12" width="34" height="24" rx="3" fill="#fff"/><path transform="translate(-9.5,-9.5) scale(.8)" fill="#E82127" d="M12 5.362l2.475-3.026s4.245.09 8.471 2.054c-1.082 1.636-3.231 2.438-3.231 2.438-.146-1.439-1.154-1.79-4.354-1.79L12 24 8.619 5.034c-3.18 0-4.188.354-4.335 1.792 0 0-2.146-.795-3.229-2.43C5.28 2.431 9.525 2.34 9.525 2.34L12 5.362l-.004.002H12v-.002zm0-3.899c3.415-.03 7.326.528 11.328 2.28.535-.968.672-1.395.672-1.395C19.625.612 15.528.015 12 0 8.472.015 4.375.61 0 2.349c0 0 .195.525.672 1.396C4.674 1.989 8.585 1.435 12 1.46v.003z"/></g>
+                <g id="badge-ubereats"><rect x="-17" y="-12" width="34" height="24" rx="3" fill="#fff"/><path transform="translate(-11,-11) scale(.92)" fill="#06C167" d="M0 2.8645v4.9972c0 1.8834 1.3315 3.1297 3.0835 3.1297a2.9652 2.9652 0 0 0 2.1502-.876v.7425H6.445V2.8645H5.223v4.9339c0 1.2642-.8696 2.1198-1.9954 2.122-1.1386-.0023-1.997-.834-1.997-2.122V2.8645zm7.3625 0v7.9934h1.163v-.7318a2.9915 2.9915 0 0 0 2.1177.876c1.714.048 3.1295-1.3283 3.1295-3.0429s-1.4155-3.091-3.1295-3.0429a2.9674 2.9674 0 0 0-2.107.876V2.8645zm9.8857 2.0561c-1.6752-.0074-3.0369 1.3492-3.0356 3.0245 0 1.7366 1.3732 3.0373 3.1537 3.0373a3.123 3.123 0 0 0 2.5578-1.2438l-.8495-.6177a2.0498 2.0498 0 0 1-1.7083.8585c-.9763.0126-1.8147-.6915-1.971-1.6553h4.818v-.379c0-1.734-1.254-3.0238-2.9638-3.0245zm6.1632.0667a1.5943 1.5943 0 0 0-1.376.7657v-.7186h-1.163v5.8235h1.1741V7.5465c0-.9023.5581-1.4847 1.3268-1.4847h.4949V4.9886c-.1576.0013-.3186-.0009-.4568-.0013zm-6.2034.944a1.844 1.844 0 0 1 1.8337 1.486H15.424a1.844 1.844 0 0 1 1.784-1.486zm-6.6589.0056c1.1223-.0084 2.0365.8992 2.0364 2.0215-.0026 1.1203-.914 2.0258-2.0343 2.021a2.0151 2.0151 0 0 1-1.4159-.5987A2.0152 2.0152 0 0 1 8.55 7.9592a2.0152 2.0152 0 0 1 .5838-1.422 2.0152 2.0152 0 0 1 1.4153-.6003zM0 12.9864v7.9716h5.7222v-1.3666H1.5458v-1.971h4.0647v-1.314H1.5458v-1.9556h4.1764v-1.3644zm14.5608.4097v1.6861h-1.1519v1.338h1.1545v3.143c0 .7927.5712 1.4209 1.6005 1.4209h1.6425L17.8 19.646h-1.1412c-.3482 0-.5714-.1509-.5714-.464v-2.7683H17.8v-1.3316h-1.7062v-1.686zm-5.2974 1.5275c-1.7348-.0103-3.141 1.4035-3.1214 3.1382.0196 1.7346 1.4575 3.1163 3.1915 3.0668a2.9915 2.9915 0 0 0 1.912-.6655v.532h1.5175v-5.9129h-1.509v.5257a3.0047 3.0047 0 0 0-1.9205-.6835c-.0244-.0007-.0492-.0006-.0701-.0008zm11.771.0077c-1.5855 0-2.7002.6437-2.7002 1.8854 0 .8607.6132 1.4213 1.936 1.695l1.4478.3286c.5694.1095.7224.2585.7224.4906 0 .3701-.438.6022-1.1279.6022-.876 0-1.3774-.1907-1.5723-.8477h-1.533c.219 1.2307 1.1563 2.05 3.0484 2.05h.0022c1.752 0 2.7422-.819 2.7422-1.9534 0-.8059-.5847-1.4084-1.8089-1.6668l-1.2943-.2605c-.7511-.1358-.988-.2738-.988-.5454 0-.357.3616-.5757 1.0295-.5757.7227 0 1.2527.1925 1.406.8473h1.5175c-.0854-1.2286-.9899-2.0497-2.8273-2.0497zM9.467 16.1815c1.0092.0096 1.8188.8369 1.8067 1.8461.0014 1.0046-.8198 1.816-1.8243 1.8025-1.0075-.0048-1.8203-.8256-1.8155-1.833.0048-1.0076.8255-1.8204 1.833-1.8156z"/></g>
+              </defs>
               <path class="road__edge" d="M70,30 C70,65 250,65 250,100 C250,135 70,135 70,170 C70,205 250,205 250,240 C250,275 70,275 70,310 C70,345 250,345 250,380 C250,412.5 70,412.5 70,445"/>
               <path class="road__asphalt" d="M70,30 C70,65 250,65 250,100 C250,135 70,135 70,170 C70,205 250,205 250,240 C250,275 70,275 70,310 C70,345 250,345 250,380 C250,412.5 70,412.5 70,445"/>
               <path class="road__centre" d="M70,30 C70,65 250,65 250,100 C250,135 70,135 70,170 C70,205 250,205 250,240 C250,275 70,275 70,310 C70,345 250,345 250,380 C250,412.5 70,412.5 70,445"/>
@@ -312,6 +322,7 @@
               <circle class="road__stop road__stop--next" cx="70" cy="445" r="5" data-name="Next · your team?"/>
               <g class="walker" data-walker>
                 <ellipse class="walker__shadow" rx="13" ry="3"/>
+                <g class="walker__placard" data-placard opacity="0" transform="translate(0,-52) scale(1.15)"><line class="walker__pole" x1="0" y1="22" x2="0" y2="-2"/><g data-placard-items transform="translate(0,-14)"></g></g>
                 <g data-walker-flip>
                   <line class="walker__limb walker__limb--back" data-w="legB"/>
                   <line class="walker__limb walker__limb--back" data-w="armB"/>
@@ -352,7 +363,7 @@
               </div>
             </li>
 
-            <li class="chapter" data-place="Berlin, Germany · 2022" data-question="What’s the right price, and can sales use it?" data-tools="Power BI, VBA, Pricing analysis">
+            <li class="chapter" data-place="Hannover, Germany · 2022" data-question="What’s the right price, and can sales use it?" data-tools="Power BI, VBA, Pricing analysis">
               <p class="chapter__when"><time datetime="2022-01">2022</time></p>
               <div class="chapter__body">
                 <h3 class="chapter__title">ZF Group <span class="chapter__role">Data analyst</span></h3>
@@ -360,6 +371,10 @@
                 <ul class="chapter__facts">
                   <li><strong>25%</strong> sales growth in six months, which my pricing work contributed to</li>
                 </ul>
+                <figure class="chapter__photo chapter__photo--pro">
+                  <img src="assets/zf-hannover.jpg" width="640" height="868" loading="lazy" alt="Adarsh outside the ZF Group office in Hannover, with the ZF logo on the roof behind him">
+                  <figcaption>On site at ZF Group, Hannover</figcaption>
+                </figure>
               </div>
             </li>
 
