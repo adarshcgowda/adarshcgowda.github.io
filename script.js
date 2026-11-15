@@ -194,29 +194,62 @@
     els.forEach((el) => observer.observe(el));
   }
 
-  // Chapter 1: the route draws to whichever chapter is in the middle of the screen
+  // Chapter 1: a walker follows the road as the chapters scroll past
 
   function initJourney() {
     const root = $("[data-journey]");
     if (!root) return;
     const chapters = $$(".chapter", root);
-    const segments = $$(".route__seg", root);
-    const stops = $$(".route__stop", root);
+    const road = $(".road__asphalt", root);
+    const stopDots = $$(".road__stop", root);
+    const walker = $("[data-walker]", root);
+    const flip = $("[data-walker-flip]", root);
+    const roadLabel = $("[data-road-label]", root);
+    const part = (name) => $(`[data-w=${name}]`, walker);
     const place = $("[data-journey-place]", root);
     const question = $("[data-journey-question]", root);
     const kit = $("[data-journey-tools]", root);
     const toolsAt = chapters.map((c) => c.dataset.tools.split(",").map((t) => t.trim()).filter(Boolean));
+    const total = road.getTotalLength();
     let current = -1;
+
+    // Path length at each stop, found by walking the road once.
+    const stopAt = [0];
+    for (let L = 0, k = 1; L <= total && k < stopDots.length; L++) {
+      const pt = road.getPointAtLength(L);
+      if (Math.hypot(pt.x - stopDots[k].cx.baseVal.value, pt.y - stopDots[k].cy.baseVal.value) < 1.5) stopAt[k++] = L;
+    }
+    while (stopAt.length < stopDots.length) stopAt.push(total);
+
+    const setLine = (name, x1, y1, x2, y2) => {
+      const e = part(name);
+      e.setAttribute("x1", x1); e.setAttribute("y1", y1);
+      e.setAttribute("x2", x2); e.setAttribute("y2", y2);
+    };
+
+    // Stick figure with its feet at (0,0); `ph` is the walk phase in radians.
+    const pose = (ph) => {
+      const hip = -18, shoulder = -33, s = Math.sin(ph), bob = Math.abs(Math.cos(ph)) * 1.5;
+      const foot = (a) => [Math.sin(a) * 13, hip + Math.cos(a) * 18];
+      const f = foot(s * 0.6), b = foot(-s * 0.6);
+      setLine("legF", 0, hip - bob, f[0], f[1]);
+      setLine("legB", 0, hip - bob, b[0], b[1]);
+      setLine("body", 0, hip - bob, 0, shoulder - bob);
+      setLine("armF", 0, shoulder - bob + 2, -s * 9, shoulder + 12 - bob);
+      setLine("armB", 0, shoulder - bob + 2, s * 9, shoulder + 12 - bob);
+      part("head").setAttribute("cx", 0);
+      part("head").setAttribute("cy", shoulder - 7 - bob);
+    };
 
     const activate = (i) => {
       if (i === current) return;
       current = i;
       chapters.forEach((c, k) => c.classList.toggle("is-active", k === i));
-      stops.forEach((s, k) => {
+      stopDots.forEach((s, k) => {
         s.classList.toggle("is-reached", k <= i);
         s.classList.toggle("is-current", k === i);
       });
-      segments.forEach((s, k) => s.classList.toggle("is-drawn", k < i));
+      roadLabel.textContent = stopDots[i].dataset.name;
       place.textContent = chapters[i].dataset.place;
       question.textContent = `“${chapters[i].dataset.question}”`;
       kit.replaceChildren(...toolsAt.slice(0, i + 1).flatMap((tools, k) => tools.map((tool) => {
@@ -227,13 +260,42 @@
       })));
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) activate(chapters.indexOf(entry.target));
-      });
-    }, { rootMargin: "-45% 0px -45% 0px" });
-    chapters.forEach((c) => observer.observe(c));
-    activate(0);
+    // Where the walker is: how far the middle of the screen has travelled between chapter centres.
+    const update = () => {
+      const mid = innerHeight / 2;
+      const centres = chapters.map((c) => { const r = c.getBoundingClientRect(); return r.top + r.height / 2; });
+      let i = 0;
+      while (i < centres.length - 1 && centres[i + 1] <= mid) i++;
+      const next = Math.min(i + 1, centres.length - 1);
+      const span = centres[next] - centres[i];
+      const frac = span > 0 ? Math.min(1, Math.max(0, (mid - centres[i]) / span)) : 0;
+      const L = mid < centres[0] ? 0 : stopAt[i] + (stopAt[next] - stopAt[i]) * frac;
+
+      const pos = road.getPointAtLength(L);
+      const dir = road.getPointAtLength(Math.min(total, L + 2)).x - road.getPointAtLength(Math.max(0, L - 2)).x >= 0 ? 1 : -1;
+      walker.setAttribute("transform", `translate(${pos.x},${pos.y})`);
+      flip.setAttribute("transform", `scale(${dir * 1.3},1.3)`);
+      walker.querySelector(".walker__shadow").setAttribute("cx", 0);
+      pose(L / 9);
+
+      // The single label rides beside the walker, on whichever side has room.
+      const right = pos.x < 160;
+      roadLabel.setAttribute("x", right ? pos.x + 32 : pos.x - 32);
+      roadLabel.setAttribute("y", pos.y - 24);
+      roadLabel.setAttribute("text-anchor", right ? "start" : "end");
+
+      activate(Math.round(Math.min(stopAt.length - 1, Math.max(0, i + (frac > 0.5 ? 1 : 0)))));
+    };
+
+    let queued = false;
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; update(); });
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+    update();
   }
 
   // Chapter 2: case tabs, each stepping from signal to impact

@@ -170,19 +170,28 @@
         <div class="journey__layout">
           <aside class="journey__panel" aria-hidden="true">
             <svg class="route" viewBox="0 0 320 470">
-              <path class="route__seg" pathLength="1" d="M70,30 C70,65 250,65 250,100"/>
-              <path class="route__seg" pathLength="1" d="M250,100 C250,135 70,135 70,170"/>
-              <path class="route__seg" pathLength="1" d="M70,170 C70,205 250,205 250,240"/>
-              <path class="route__seg" pathLength="1" d="M250,240 C250,275 70,275 70,310"/>
-              <path class="route__seg" pathLength="1" d="M70,310 C70,345 250,345 250,380"/>
-              <path class="route__seg route__seg--next" pathLength="1" d="M250,380 C250,415 70,415 70,445"/>
-              <g class="route__stop"><circle cx="70" cy="30" r="8"/><text x="92" y="35">2019 · Tata Motors</text></g>
-              <g class="route__stop"><circle cx="250" cy="100" r="8"/><text x="228" y="105" text-anchor="end">2020 · Berlin</text></g>
-              <g class="route__stop"><circle cx="70" cy="170" r="8"/><text x="92" y="175">2022 · ZF Group</text></g>
-              <g class="route__stop"><circle cx="250" cy="240" r="8"/><text x="228" y="245" text-anchor="end">2023 · SRH</text></g>
-              <g class="route__stop"><circle cx="70" cy="310" r="8"/><text x="92" y="315">2023 · Tesla</text></g>
-              <g class="route__stop"><circle cx="250" cy="380" r="8"/><text x="228" y="385" text-anchor="end">2024 · Uber Eats</text></g>
-              <g class="route__stop route__stop--next"><circle cx="70" cy="445" r="8"/><text x="92" y="450">Next · your team?</text></g>
+              <path class="road__edge" d="M70,30 C70,65 250,65 250,100 C250,135 70,135 70,170 C70,205 250,205 250,240 C250,275 70,275 70,310 C70,345 250,345 250,380 C250,412.5 70,412.5 70,445"/>
+              <path class="road__asphalt" d="M70,30 C70,65 250,65 250,100 C250,135 70,135 70,170 C70,205 250,205 250,240 C250,275 70,275 70,310 C70,345 250,345 250,380 C250,412.5 70,412.5 70,445"/>
+              <path class="road__centre" d="M70,30 C70,65 250,65 250,100 C250,135 70,135 70,170 C70,205 250,205 250,240 C250,275 70,275 70,310 C70,345 250,345 250,380 C250,412.5 70,412.5 70,445"/>
+              <circle class="road__stop" cx="70" cy="30" r="5" data-name="2019 · Tata Motors"/>
+              <circle class="road__stop" cx="250" cy="100" r="5" data-name="2020 · Berlin"/>
+              <circle class="road__stop" cx="70" cy="170" r="5" data-name="2022 · ZF Group"/>
+              <circle class="road__stop" cx="250" cy="240" r="5" data-name="2023 · SRH"/>
+              <circle class="road__stop" cx="70" cy="310" r="5" data-name="2023 · Tesla"/>
+              <circle class="road__stop" cx="250" cy="380" r="5" data-name="2024 · Uber Eats"/>
+              <circle class="road__stop road__stop--next" cx="70" cy="445" r="5" data-name="Next · your team?"/>
+              <g class="walker" data-walker>
+                <ellipse class="walker__shadow" rx="13" ry="3"/>
+                <g data-walker-flip>
+                  <line class="walker__limb walker__limb--back" data-w="legB"/>
+                  <line class="walker__limb walker__limb--back" data-w="armB"/>
+                  <line class="walker__limb" data-w="legF"/>
+                  <line class="walker__limb" data-w="body"/>
+                  <circle class="walker__head" r="6" data-w="head"/>
+                  <line class="walker__limb" data-w="armF"/>
+                </g>
+              </g>
+              <text class="road__label" data-road-label></text>
             </svg>
             <div class="journey__now">
               <p class="journey__place" data-journey-place>Bangalore, India · 2024</p>

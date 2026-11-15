@@ -939,43 +939,54 @@ button {
   overflow: visible;
 }
 
-.route__seg {
+.road__edge,
+.road__asphalt,
+.road__centre {
   fill: none;
-  stroke: var(--band);
-  stroke-width: 3;
   stroke-linecap: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
+  stroke-linejoin: round;
 }
 
-.route__seg--next {
-  stroke-dasharray: 0.02 0.03;
-  opacity: 0.6;
+.road__edge { stroke: rgba(191, 215, 234, 0.28); stroke-width: 46; }
+.road__asphalt { stroke: #2b3441; stroke-width: 40; }
+.road__centre { stroke: #f3d36b; stroke-width: 2.5; stroke-dasharray: 10 12; opacity: 0.8; }
+
+.road__stop {
+  fill: #f3d36b;
+  stroke: #2b3441;
+  stroke-width: 2;
+  opacity: 0.4;
+  transition: opacity 0.4s ease;
 }
 
-.route__stop circle {
-  fill: var(--band);
-  stroke: var(--night);
-  stroke-width: 3;
+.road__stop.is-reached { opacity: 1; }
+
+.road__stop--next {
+  fill: #2b3441;
+  stroke: #f3d36b;
+  stroke-dasharray: 2 2;
 }
 
-.route__stop text {
+.walker__shadow { fill: rgba(0, 0, 0, 0.35); }
+
+.walker__limb {
+  stroke: #fff;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.walker__limb--back { stroke: #aab6c6; }
+.walker__head { fill: #fff; }
+
+.road__label {
   fill: var(--paper);
   font-family: var(--font);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.route__stop--next circle {
-  fill: var(--night);
-  stroke: var(--band);
-  stroke-width: 2;
-  stroke-dasharray: 3 3;
-}
-
-
-.route__stop.is-current circle {
-  fill: var(--signal-bright);
+  font-size: 15px;
+  font-weight: 650;
+  paint-order: stroke;
+  stroke: var(--night);
+  stroke-width: 4px;
+  stroke-linejoin: round;
 }
 
 .journey__now {
@@ -1026,61 +1037,6 @@ button {
 html:not(.js) .journey__kit-label,
 html:not(.js) .journey__kit {
   display: none;
-}
-
-/* With the script, the route draws in stop by stop as the chapters pass */
-.js .route__seg {
-  stroke-dashoffset: 1;
-  transition: stroke-dashoffset 0.7s var(--ease);
-}
-
-.js .route__seg.is-drawn {
-  stroke-dashoffset: 0;
-}
-
-.js .route__seg--next {
-  stroke-dasharray: none;
-  stroke-dashoffset: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.js .route__seg--next.is-drawn {
-  stroke-dasharray: 0.02 0.03;
-  opacity: 0.6;
-}
-
-.js .route__stop {
-  opacity: 0.35;
-  transition: opacity 0.4s ease;
-}
-
-.js .route__stop circle {
-  fill: var(--night);
-  stroke: var(--band);
-  stroke-width: 2;
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.3s ease, fill 0.3s ease;
-}
-
-.js .route__stop.is-reached {
-  opacity: 1;
-}
-
-.js .route__stop.is-reached circle {
-  fill: var(--band);
-}
-
-.js .route__stop.is-current circle {
-  fill: var(--signal-bright);
-  stroke: var(--signal-bright);
-  transform: scale(1.35);
-}
-
-.js .route__stop--next.is-current circle {
-  fill: var(--night);
-  stroke-dasharray: 3 3;
 }
 
 @media (prefers-reduced-motion: no-preference) {
