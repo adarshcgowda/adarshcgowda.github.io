@@ -396,7 +396,7 @@ button {
   z-index: 2;
   transform: translateZ(10px) translate(var(--tx), var(--ty)) rotate(var(--r));
   transform-origin: 50% 90%;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease, z-index 0s 0.2s;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.45s ease, z-index 0s 0.2s;
 }
 
 .portrait__card picture {
@@ -414,14 +414,14 @@ button {
   object-position: 50% 40%;
 }
 
-/* Whichever card is behind peeks out at the top left, tilted and dimmed */
+/* The card that isn't showing is fully hidden; the swap crossfades with a small turn */
 .portrait[data-front="pro"] .portrait__card--grad,
 .portrait[data-front="grad"] .portrait__card--pro {
-  --tx: -1.1rem;
-  --ty: -0.6rem;
-  --r: -5deg;
+  --tx: 0.8rem;
+  --r: 3deg;
   z-index: 1;
-  filter: brightness(0.82);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .portrait__hint {
