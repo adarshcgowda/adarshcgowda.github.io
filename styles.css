@@ -1144,20 +1144,6 @@ html:not(.js) .journey__kit {
   font-weight: 700;
 }
 
-.chapter__body > .chapter__note {
-  margin-top: 1.1rem;
-  padding-left: 0.9rem;
-  border-left: 2px solid var(--signal-bright);
-  color: #dbe4ee;
-  font-size: var(--step--1);
-}
-
-.chapter__note a {
-  color: var(--band);
-  font-weight: 600;
-  text-underline-offset: 0.2em;
-}
-
 /* A photo from the road: a print, slightly tilted, that straightens on hover */
 .chapter__photo {
   width: min(100%, 16rem);
@@ -1672,6 +1658,91 @@ html:not(.js) .journey__kit {
     right: auto;
     width: 2px;
     height: auto;
+  }
+}
+
+/* Chapter 4: speaking and community */
+
+.talk {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+  margin-top: 2.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--paper-raised);
+  border: 1px solid var(--grid);
+  border-left: 4px solid var(--signal);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.talk__visual {
+  padding: 1.25rem;
+  background: var(--night);
+  border-radius: var(--radius);
+}
+
+.talk__visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.talk__screen {
+  fill: var(--night-raised);
+  stroke: var(--night-line);
+}
+
+.talk__visual .glyph-line {
+  stroke: var(--band);
+}
+
+.talk__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+
+.talk__badge {
+  padding: 0.15rem 0.55rem;
+  background: var(--signal);
+  border-radius: 999px;
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.talk__title {
+  margin-top: 0.6rem;
+  font-size: var(--step-2);
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.talk__body > p:not(.talk__meta) {
+  max-width: var(--measure);
+  margin-top: 0.75rem;
+  color: var(--ink-soft);
+}
+
+.talk__body > .button {
+  margin-top: 1.25rem;
+}
+
+.snapshot__facts a {
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 46rem) {
+  .talk {
+    grid-template-columns: 1fr;
+  }
+
+  .talk__visual {
+    max-width: 12rem;
   }
 }
 
