@@ -1665,7 +1665,7 @@ html:not(.js) .journey__kit {
 
 .talk {
   display: grid;
-  grid-template-columns: 15rem 1fr;
+  grid-template-columns: 19rem 1fr;
   gap: clamp(1.5rem, 4vw, 2.5rem);
   align-items: center;
   margin-top: 2.5rem;
@@ -1677,25 +1677,18 @@ html:not(.js) .journey__kit {
   box-shadow: var(--shadow);
 }
 
-.talk__visual {
-  padding: 1.25rem;
-  background: var(--night);
-  border-radius: var(--radius);
-}
-
-.talk__visual svg {
+.talk__banner img {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-.talk__screen {
-  fill: var(--night-raised);
-  stroke: var(--night-line);
-}
-
-.talk__visual .glyph-line {
-  stroke: var(--band);
+.talk__banner figcaption {
+  margin-top: 0.5rem;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
 }
 
 .talk__meta {
@@ -1816,8 +1809,8 @@ html:not(.js) .journey__kit {
     grid-template-columns: 1fr;
   }
 
-  .talk__visual {
-    max-width: 12rem;
+  .talk__banner {
+    max-width: 18rem;
   }
 }
 
