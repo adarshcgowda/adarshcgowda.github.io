@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roadmap</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress"><span id="bar"></span></div>
+
+  <main id="track">
+    <section class="stage">
+      <svg id="road" xmlns="http://www.w3.org/2000/svg">
+        <path id="edge" class="road-edge"/>
+        <path id="asphalt" class="road-asphalt"/>
+        <path id="centre" class="road-centre"/>
+        <g id="stops"></g>
+        <g id="man" class="man">
+          <ellipse class="shadow" cx="0" cy="0" rx="12" ry="3"/>
+          <g id="flip">
+            <line id="legB" class="limb back" />
+            <line id="armB" class="limb back" />
+            <line id="legF" class="limb" />
+            <line id="body" class="limb" />
+            <circle id="head" class="head" r="6"/>
+            <line id="armF" class="limb" />
+          </g>
+        </g>
+      </svg>
+      <div class="label" id="label"><small id="labelYear"></small><strong id="labelName"></strong></div>
+    </section>
+  </main>
+
+  <script>
+    // Edit this list to change the roadmap.
+    const STEPS = [
+      { year: "2019", label: "Tata Motors" },
+      { year: "2020", label: "Berlin" },
+      { year: "2022", label: "ZF Group" },
+      { year: "2023", label: "SRH" },
+      { year: "2023", label: "Tesla" },
+      { year: "2024", label: "Uber Eats" },
+      { year: "Next", label: "Your team?" },
+    ];
+
+    const NS = "http://www.w3.org/2000/svg";
+    const $ = id => document.getElementById(id);
+    const svg = $("road"), track = $("track"), asphalt = $("asphalt");
+    const man = $("man"), flip = $("flip"), label = $("label");
+
+    let pts = [], nodeLen = [], total = 0, shown = -1;
+
+    function layout() {
+      const w = svg.clientWidth, h = svg.clientHeight;
+      const left = w * 0.25, right = Math.max(left + 120, w * 0.75);
+      const top = h * 0.1, gap = (h * 0.8) / (STEPS.length - 1);
+      pts = STEPS.map((_, i) => ({ x: i % 2 ? right : left, y: top + gap * i }));
+
+      let d = `M${pts[0].x},${pts[0].y}`;
+      for (let i = 1; i < pts.length; i++) {
+        const a = pts[i - 1], b = pts[i], m = (a.y + b.y) / 2;
+        d += ` C${a.x},${m} ${b.x},${m} ${b.x},${b.y}`;
+      }
+      ["edge", "asphalt", "centre"].forEach(id => $(id).setAttribute("d", d));
+      total = asphalt.getTotalLength();
+
+      nodeLen = [0];
+      for (let L = 0, j = 1; L <= total && j < pts.length; L++) {
+        const p = asphalt.getPointAtLength(L);
+        if (Math.hypot(p.x - pts[j].x, p.y - pts[j].y) < 1.5) nodeLen[j++] = L;
+      }
+      while (nodeLen.length < pts.length) nodeLen.push(total);
+
+      // Small milestone markers painted on the road (no text).
+      $("stops").innerHTML = pts.map(p =>
+        `<circle class="stop" cx="${p.x}" cy="${p.y}" r="5"/>`).join("");
+      shown = -1;
+      update();
+    }
+
+    function line(id, x1, y1, x2, y2) {
+      const e = $(id);
+      e.setAttribute("x1", x1); e.setAttribute("y1", y1);
+      e.setAttribute("x2", x2); e.setAttribute("y2", y2);
+    }
+
+    // Stick figure, feet at (0,0). `ph` is the walk phase in radians.
+    function pose(ph) {
+      const hipY = -18, shoulderY = -33, S = Math.sin(ph), bob = Math.abs(Math.cos(ph)) * 1.5;
+      const leg = (a) => [Math.sin(a) * 13, hipY + Math.cos(a) * 18 - 0]; // foot offset
+      const lf = leg(S * 0.6), lb = leg(-S * 0.6);
+      line("legF", 0, hipY - bob, lf[0], lf[1] - bob * 0);
+      line("legB", 0, hipY - bob, lb[0], lb[1]);
+      line("body", 0, hipY - bob, 0, shoulderY - bob);
+      line("armF", 0, shoulderY - bob + 2, -S * 9, shoulderY + 12 - bob);
+      line("armB", 0, shoulderY - bob + 2, S * 9, shoulderY + 12 - bob);
+      const h = $("head");
+      h.setAttribute("cx", 0); h.setAttribute("cy", shoulderY - 7 - bob);
+    }
+
+    function update() {
+      const max = track.offsetHeight - innerHeight;
+      const p = Math.min(1, Math.max(0, scrollY / max));
+      const L = p * total;
+      $("bar").style.width = p * 100 + "%";
+
+      const pos = asphalt.getPointAtLength(L);
+      const ahead = asphalt.getPointAtLength(Math.min(total, L + 2));
+      const behind = asphalt.getPointAtLength(Math.max(0, L - 2));
+      const dir = ahead.x - behind.x >= 0 ? 1 : -1;
+      man.setAttribute("transform", `translate(${pos.x},${pos.y})`);
+      flip.setAttribute("transform", `scale(${dir},1)`);
+      pose(L / 9);
+
+      // One label: the latest stop reached, placed beside the walker.
+      let active = 0;
+      nodeLen.forEach((n, i) => { if (L >= n - 0.5) active = i; });
+      if (active !== shown) {
+        shown = active;
+        $("labelYear").textContent = STEPS[active].year;
+        $("labelName").textContent = STEPS[active].label;
+        label.classList.remove("pop"); void label.offsetWidth; label.classList.add("pop");
+      }
+      const w = svg.clientWidth;
+      const side = pos.x < w / 2 ? "right" : "left";
+      label.dataset.side = side;
+      label.style.top = pos.y - 70 + "px";
+      label.style.left = side === "right" ? pos.x + 40 + "px" : "auto";
+      label.style.right = side === "left" ? w - pos.x + 40 + "px" : "auto";
+    }
+
+    addEventListener("scroll", update, { passive: true });
+    addEventListener("resize", layout);
+    track.style.height = `${STEPS.length * 70 + 100}vh`;
+    layout();
+  </script>
+</body>
+</html>
