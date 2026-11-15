@@ -1879,11 +1879,11 @@ html:not(.js) .journey__kit {
   }
 }
 
-/* Featured project: CaneIQ */
+/* Featured project: CaneIQ. One compact panel with four views, sized to fit a single screen. */
 
 .feature {
   margin-top: 2.5rem;
-  padding: clamp(1.25rem, 3vw, 2.25rem);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
   background: var(--paper-raised);
   border: 1px solid var(--grid);
   border-top: 4px solid var(--signal);
@@ -1891,91 +1891,470 @@ html:not(.js) .journey__kit {
   box-shadow: var(--shadow);
 }
 
+.feature__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
 .talk__badge--done {
   background: #2f7d57;
 }
 
 .feature__title {
-  margin-top: 0.6rem;
-  font-size: var(--step-3);
+  margin-top: 0.5rem;
+  font-size: var(--step-2);
   font-weight: 650;
   line-height: 1.15;
   letter-spacing: -0.015em;
 }
 
 .feature__lede {
-  max-width: 46rem;
-  margin-top: 0.85rem;
+  max-width: 44rem;
+  margin-top: 0.4rem;
   color: var(--ink-soft);
+}
+
+.feature__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.feature > .case__tools {
+  margin-top: 1rem;
+}
+
+/* View switcher */
+
+.views {
+  display: none;
+}
+
+.js .views {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 1.25rem;
+  padding: 0.25rem;
+  background: var(--paper);
+  border: 1px solid var(--grid);
+  border-radius: 999px;
+}
+
+.views__tab {
+  padding: 0.4rem 0.95rem;
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.views__tab:hover {
+  color: var(--ink);
+}
+
+.views__tab[aria-selected="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.views__stage {
+  margin-top: 1rem;
+}
+
+.view + .view {
+  margin-top: 2rem;
+}
+
+.view__title {
+  margin-bottom: 0.75rem;
   font-size: var(--step-1);
-  line-height: 1.5;
+  font-weight: 650;
 }
 
-.feature__facts {
+/* With the script, the views share one fixed-height stage so the panel never grows past a screen */
+.js .views__stage {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 1.75rem;
-  border-top: 2px solid var(--ink);
+  min-height: 24rem;
 }
 
-.feature__facts li {
-  padding: 0.85rem 1rem 0 0;
-  color: var(--ink-soft);
+.js .view {
+  grid-area: 1 / 1;
+  margin: 0;
+}
+
+.js .view__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .view:not([hidden]) {
+    animation: rise 0.35s ease both;
+  }
+}
+
+/* View 1: infographic */
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 13rem 1fr;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.info .view__title {
+  grid-column: 1 / -1;
+}
+
+.info__col {
+  padding: 1rem 1.15rem;
+  background: var(--paper);
+  border-radius: var(--radius);
+}
+
+.info__head {
+  color: var(--signal);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.info__inputs,
+.info__findings {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.75rem;
   font-size: var(--step--1);
   line-height: 1.35;
 }
 
-.feature__facts li + li {
-  padding-left: 1rem;
-  border-left: 1px solid var(--grid);
-}
-
-.feature__facts strong {
-  display: block;
-  color: var(--ink);
-  font-size: var(--step-2);
-  font-weight: 650;
-  letter-spacing: -0.02em;
-}
-
-.feature__flow {
+.info__inputs li {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  margin-top: 2rem;
-  counter-reset: flow;
-}
-
-.feature__flow li {
-  padding-top: 0.75rem;
-  border-top: 2px solid var(--band);
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.5rem;
   color: var(--ink-soft);
-  font-size: var(--step--1);
-  counter-increment: flow;
 }
 
-.feature__flow li:last-child {
-  border-top-color: var(--ink);
+.info__inputs li:not(:has(strong)) {
+  grid-template-columns: 1fr;
 }
 
-.feature__step {
-  display: block;
-  margin-bottom: 0.3rem;
+.info__inputs strong {
   color: var(--ink);
-  font-size: var(--step-0);
-  font-weight: 650;
+  font-weight: 700;
 }
 
-.feature__step::before {
-  content: counter(flow) ". ";
+.info__core {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Arrows in and out of the engine */
+.info__core::before,
+.info__core::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 1.25rem;
+  height: 2px;
+  background: var(--ink);
+}
+
+.info__core::before {
+  left: -1.25rem;
+}
+
+.info__core::after {
+  right: -1.25rem;
+}
+
+.info__engine {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 11rem;
+  height: 11rem;
+  padding: 0 1.75rem;
+  border-radius: 50%;
+  background: var(--night);
+  color: var(--paper);
+  font-size: var(--step--1);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  box-shadow: 0 0 0 8px var(--band);
+}
+
+.info__big {
+  display: block;
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.info__engine .info__big {
+  color: var(--band);
+}
+
+.info__big--small {
+  display: inline;
+  font-size: var(--step-2);
+  color: var(--ink);
+}
+
+.info__steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  counter-reset: info;
+}
+
+.info__steps li {
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--grid);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  counter-increment: info;
+}
+
+.info__steps li::before {
+  content: counter(info) " ";
   color: var(--signal);
 }
 
-.feature__subtitle {
-  margin-top: 2.25rem;
-  font-size: var(--step-1);
+.info__result {
+  margin-top: 0.6rem;
+  font-weight: 600;
+}
+
+.info__findings li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.info__tag {
+  flex: none;
+  min-width: 5.6rem;
+  padding: 0.05rem 0.45rem;
+  background: rgba(194, 37, 92, 0.12);
+  border-radius: 4px;
+  color: var(--signal);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.info__tag--up {
+  background: rgba(47, 125, 87, 0.12);
+  color: #2f7d57;
+}
+
+.info__tag--next {
+  background: rgba(27, 42, 65, 0.1);
+  color: var(--ink);
+}
+
+/* View 2: mind map. Five branches around the decision, joined by lines drawn underneath */
+
+.mind {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "market .      money"
+    "comp   center ops"
+    ".      agents .";
+  gap: 0.6rem 2.5rem;
+  align-items: center;
+}
+
+.mind .view__title {
+  grid-column: 1 / -1;
+}
+
+.mind__lines {
+  display: none;
+}
+
+.js .mind__lines {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.mind__lines path {
+  fill: none;
+  stroke: var(--band);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.mind__center {
+  position: relative;
+  grid-area: center;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: var(--night);
+  color: var(--night-soft);
+  font-size: var(--step--1);
+  text-align: center;
+  box-shadow: 0 0 0 8px var(--paper-raised), 0 0 0 10px var(--band);
+}
+
+.mind__center span {
+  display: block;
+  color: var(--paper);
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+
+.mind__branch {
+  position: relative;
+  padding: 0.75rem 0.9rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--grid);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.mind__branch--market { grid-area: market; }
+.mind__branch--money { grid-area: money; }
+.mind__branch--comp { grid-area: comp; }
+.mind__branch--ops { grid-area: ops; }
+.mind__branch--agents { grid-area: agents; border-color: var(--signal); }
+
+.mind__node {
   font-weight: 650;
 }
+
+.mind__node::before {
+  content: "";
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.45rem;
+  border-radius: 50%;
+  background: var(--signal);
+}
+
+.mind__branch ul {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.mind__branch li::before {
+  content: "– ";
+  color: var(--band);
+}
+
+/* View 3: AI agents */
+
+.agents {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.85rem;
+}
+
+.agent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--paper);
+  border-radius: var(--radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agent:hover {
+  background: var(--paper-raised);
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+
+.agent__mark {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--night);
+  color: var(--band);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.agent__role {
+  font-size: var(--step-0);
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.agent__ask,
+.agent__raise {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.agent__ask {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.agent__raise {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--grid);
+}
+
+.agent__ask span,
+.agent__raise span {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--signal);
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* View 4: assumption cards. Tap to swap the assumption for what the evidence said */
 
 .feature__hint {
   display: none;
@@ -1983,25 +2362,22 @@ html:not(.js) .journey__kit {
 
 .js .feature__hint {
   display: block;
-  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
   color: var(--ink-soft);
   font-size: var(--step--1);
 }
-
-/* Assumption cards: tap to swap the assumption for what the evidence said */
 
 .flip-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.85rem;
-  margin-top: 1rem;
 }
 
 .flip {
   display: grid;
   width: 100%;
   height: 100%;
-  min-height: 8.5rem;
+  min-height: 9rem;
   padding: 0;
   background: none;
   border: 0;
@@ -2041,7 +2417,6 @@ html:not(.js) .journey__kit {
   color: var(--signal-bright);
 }
 
-/* With the script, both sides share one slot and the card swaps on tap */
 .js .flip {
   cursor: pointer;
 }
@@ -2084,35 +2459,77 @@ html:not(.js) .journey__kit {
   font-weight: 600;
 }
 
-.feature__insight {
-  max-width: 50rem;
-  margin-top: 1.75rem;
-  padding: 1rem 1.15rem;
-  background: rgba(191, 215, 234, 0.35);
-  border-left: 4px solid var(--band);
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
-.feature .case__foot {
-  margin-top: 1.75rem;
-}
-
 .project-list--tight {
   margin-top: 1rem;
 }
 
+@media (max-width: 60rem) {
+  .agents {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 52rem) {
-  .feature__facts,
-  .feature__flow {
-    grid-template-columns: repeat(2, 1fr);
+  .info {
+    grid-template-columns: 1fr;
   }
 
-  .feature__facts li:nth-child(3) {
-    padding-left: 0;
-    border-left: 0;
+  .info__core::before,
+  .info__core::after {
+    display: none;
+  }
+
+  .info__engine {
+    width: auto;
+    height: auto;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: none;
+  }
+
+  /* On narrow screens the mind map becomes a tree: the decision, then each branch beneath it */
+  .mind {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+    gap: 0.6rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--band);
+  }
+
+  .mind .view__title,
+  .mind__center,
+  .mind__branch {
+    grid-area: auto;
+  }
+
+  .js .mind__lines {
+    display: none;
+  }
+
+  .mind__center {
+    justify-self: start;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius);
+    box-shadow: none;
+  }
+
+  .agents {
+    grid-template-columns: 1fr 1fr;
   }
 
   .flip-list {
+    grid-template-columns: 1fr;
+  }
+
+  .js .views__stage {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 30rem) {
+  .agents {
     grid-template-columns: 1fr;
   }
 }

@@ -357,6 +357,33 @@
     }));
   }
 
+  // Projects: the CaneIQ panel switches between its four views
+
+  function initViews() {
+    $$("[data-views]").forEach((root) => {
+      const tabs = $$("[role=tab]", root);
+      const panels = tabs.map((t) => document.getElementById(t.getAttribute("aria-controls")));
+      const select = (i, focus = false) => {
+        tabs.forEach((t, k) => {
+          t.setAttribute("aria-selected", String(k === i));
+          t.tabIndex = k === i ? 0 : -1;
+        });
+        panels.forEach((p, k) => { p.hidden = k !== i; });
+        if (focus) tabs[i].focus();
+      };
+      tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => select(i));
+        tab.addEventListener("keydown", (e) => {
+          const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+          if (!step) return;
+          e.preventDefault();
+          select((i + step + tabs.length) % tabs.length, true);
+        });
+      });
+      select(0);
+    });
+  }
+
   initProgress();
   initNav();
   initGame();
@@ -365,4 +392,5 @@
   initCases();
   initMethod();
   initFlips();
+  initViews();
 })();

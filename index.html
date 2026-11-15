@@ -529,63 +529,163 @@
         <h2 class="section__title" id="projects-title">Independent projects</h2>
         <p class="section__lede">Work I do on my own time, start to finish. The first one is complete; the rest are in progress, and links go up as each one ships.</p>
 
-        <article class="feature" id="caneiq" data-flips>
-          <p class="talk__meta"><span class="talk__badge talk__badge--done">Completed</span> Independent business case · Mysore · June 2026</p>
-          <h3 class="feature__title">CaneIQ: an AI co-founder for a ₹2 lakh decision</h3>
-          <p class="feature__lede">I was about to put ₹2 lakh into a premium sugarcane juice shop in Mysore. The problem wasn’t too little information but too much: supplier quotes, machine specs, competitor visits, store observations and my own financial guesses. So I built a decision-support system in NotebookLM to challenge every assumption before any money moved.</p>
-
-          <ul class="feature__facts">
-            <li><strong>₹2 lakh</strong> decision under test</li>
-            <li><strong>5</strong> AI roles arguing the case</li>
-            <li><strong>3</strong> competitor shops visited</li>
-            <li><strong>30-day</strong> go/no-go launch plan</li>
-          </ul>
-
-          <ol class="feature__flow">
-            <li><span class="feature__step">Load</span>Supplier quotes, machine research, competitor tracker, demand model and founder notes, each marked as fact or assumption with a confidence level.</li>
-            <li><span class="feature__step">Pressure-test</span>NotebookLM argued the case as investor, competitor, CFO, business consultant and founder advisor, told to separate facts from assumptions and never invent data.</li>
-            <li><span class="feature__step">Audit</span>Checked my subjective observations and the maths behind them against local market constraints.</li>
-            <li><span class="feature__step">Decide</span>Synthesised everything into a 30-day go/no-go launch blueprint, with what still had to be validated.</li>
-          </ol>
-
-          <h4 class="feature__subtitle">Assumption versus evidence</h4>
-          <p class="feature__hint">Tap a card to see what the analysis found.</p>
-          <ul class="flip-list">
-            <li>
-              <button class="flip" type="button" aria-expanded="false" data-flip>
-                <span class="flip__side flip__side--front"><span class="flip__label">I assumed</span>A prime location will pull health-conscious professionals away from their usual juice spots.</span>
-                <span class="flip__side flip__side--back"><span class="flip__label">The evidence said</span>Location alone proves nothing. Before buying equipment, count footfall at the site for 12 hours a day over 3 days.</span>
-              </button>
-            </li>
-            <li>
-              <button class="flip" type="button" aria-expanded="false" data-flip>
-                <span class="flip__side flip__side--front"><span class="flip__label">I assumed</span>A steady 100 customers a day, every day of the year.</span>
-                <span class="flip__side flip__side--back"><span class="flip__label">The evidence said</span>Demand follows the weather. The model ignored seasonality, and a heavy monsoon could stretch the payback period a long way.</span>
-              </button>
-            </li>
-            <li>
-              <button class="flip" type="button" aria-expanded="false" data-flip>
-                <span class="flip__side flip__side--front"><span class="flip__label">I assumed</span>Wellness-style flavours will justify premium prices.</span>
-                <span class="flip__side flip__side--back"><span class="flip__label">The evidence said</span>A competitor’s medicinal-herb menu put customers off on taste and price. Keep fruit infusions such as apple and beetroot, and keep sugarcane the star.</span>
-              </button>
-            </li>
-            <li>
-              <button class="flip" type="button" aria-expanded="false" data-flip>
-                <span class="flip__side flip__side--front"><span class="flip__label">I assumed</span>Electricity and water: to be decided later.</span>
-                <span class="flip__side flip__side--back"><span class="flip__label">The evidence said</span>The cheap commercial juicer’s power use was never benchmarked, and crushed-cane waste needs a daily removal deal or it brings pests.</span>
-              </button>
-            </li>
-          </ul>
-
-          <p class="feature__insight"><strong>The biggest opportunity:</strong> office professionals pay more when hygiene is visible, such as a glass-sterilising machine at the counter, and existing premium shops struggle to serve the 11 AM to 3 PM lunch rush well.</p>
-
-          <div class="case__foot">
-            <p class="case__tools">NotebookLM, spreadsheets, field observation, prompt design</p>
-            <div class="cert__actions">
-              <a class="button button--solid" href="https://www.linkedin.com/posts/adarshcgowda_ai-notebooklm-promptengineering-ugcPost-7472488367759179776-IYKC/" rel="noopener">Read the case study on LinkedIn</a>
+        <article class="feature" id="caneiq" data-views>
+          <div class="feature__head">
+            <div>
+              <p class="talk__meta"><span class="talk__badge talk__badge--done">Completed</span> Independent business case · Mysore · June 2026</p>
+              <h3 class="feature__title">CaneIQ: an AI co-founder for a ₹2 lakh decision</h3>
+              <p class="feature__lede">Before putting ₹2 lakh into a premium sugarcane juice shop, I built a NotebookLM decision system where five AI agents challenged every assumption.</p>
+            </div>
+            <div class="feature__links">
+              <a class="button button--solid" href="https://www.linkedin.com/posts/adarshcgowda_ai-notebooklm-promptengineering-ugcPost-7472488367759179776-IYKC/" rel="noopener">Full case study on LinkedIn</a>
               <a class="button" href="https://www.linkedin.com/posts/adarshcgowda_aicofounderbusinesscasestudy-ugcPost-7470877928835420161-_79m/" rel="noopener">See the carousel</a>
             </div>
           </div>
+
+          <div class="views" role="tablist" aria-label="CaneIQ views">
+            <button class="views__tab" role="tab" type="button" id="cq-tab-info" aria-controls="cq-info" aria-selected="true">Infographic</button>
+            <button class="views__tab" role="tab" type="button" id="cq-tab-map" aria-controls="cq-map" aria-selected="false">Mind map</button>
+            <button class="views__tab" role="tab" type="button" id="cq-tab-agents" aria-controls="cq-agents" aria-selected="false">AI agents</button>
+            <button class="views__tab" role="tab" type="button" id="cq-tab-flips" aria-controls="cq-flips" aria-selected="false">Assumptions</button>
+          </div>
+
+          <div class="views__stage">
+            <!-- Infographic: what went in, how it was tested, what came out -->
+            <section class="view info" id="cq-info" role="tabpanel" aria-labelledby="cq-tab-info">
+              <h4 class="view__title">Infographic</h4>
+              <div class="info__col">
+                <p class="info__head">What went in</p>
+                <ul class="info__inputs">
+                  <li><strong>3</strong> competitor shops visited and photographed</li>
+                  <li><strong>₹550–700</strong> per quintal of cane, from supplier quotes</li>
+                  <li><strong>₹55–90k</strong> machine price range from vendor research</li>
+                  <li><strong>50–250</strong> customers a day, across four demand scenarios</li>
+                  <li><strong>₹20–30k</strong> monthly rent estimates</li>
+                  <li>Founder notes and questions, each tagged by confidence</li>
+                </ul>
+              </div>
+              <div class="info__core" aria-hidden="false">
+                <div class="info__engine">
+                  <span class="info__big">5</span>
+                  <span>AI agents in NotebookLM</span>
+                </div>
+                <ol class="info__steps">
+                  <li>Load</li><li>Pressure-test</li><li>Audit</li><li>Decide</li>
+                </ol>
+              </div>
+              <div class="info__col">
+                <p class="info__head">What came out</p>
+                <p class="info__result"><span class="info__big info__big--small">30-day</span> go/no-go launch blueprint</p>
+                <ul class="info__findings">
+                  <li><span class="info__tag info__tag--up">Opportunity</span>Visible hygiene earns a price premium</li>
+                  <li><span class="info__tag info__tag--up">Opportunity</span>Rivals struggle in the lunch rush</li>
+                  <li><span class="info__tag">Risk</span>Monsoon could stretch the payback</li>
+                  <li><span class="info__tag">Risk</span>Herb-heavy menus put customers off</li>
+                  <li><span class="info__tag info__tag--next">Validate</span>Count footfall 12 h a day for 3 days</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Mind map: the decision and its five branches -->
+            <section class="view mind" id="cq-map" role="tabpanel" aria-labelledby="cq-tab-map">
+              <h4 class="view__title">Mind map</h4>
+              <svg class="mind__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M50,50 L17,18"/><path d="M50,50 L83,18"/><path d="M50,50 L17,60"/><path d="M50,50 L83,60"/><path d="M50,50 L50,86"/>
+              </svg>
+              <div class="mind__center"><span>CaneIQ</span>₹2 lakh go/no-go</div>
+              <div class="mind__branch mind__branch--market">
+                <p class="mind__node">Market</p>
+                <ul><li>Office and tech professionals</li><li>50 to 250 customers a day, by scenario</li><li>Lunch rush, 11 AM to 3 PM</li></ul>
+              </div>
+              <div class="mind__branch mind__branch--money">
+                <p class="mind__node">Money</p>
+                <ul><li>Machine ₹55k to ₹90k</li><li>Rent ₹20k to ₹30k a month</li><li>Payback at risk in the monsoon</li></ul>
+              </div>
+              <div class="mind__branch mind__branch--comp">
+                <p class="mind__node">Competition</p>
+                <ul><li>3 premium shops visited</li><li>Herb-heavy menus put people off</li><li>Service gaps at peak</li></ul>
+              </div>
+              <div class="mind__branch mind__branch--ops">
+                <p class="mind__node">Operations</p>
+                <ul><li>Cane ₹550 to ₹700 a quintal, daily</li><li>First-in, first-out stock</li><li>Hygiene routine and waste removal</li></ul>
+              </div>
+              <div class="mind__branch mind__branch--agents">
+                <p class="mind__node">AI agents</p>
+                <ul><li>Investor · Competitor · CFO</li><li>Consultant · Founder advisor</li><li>Facts kept apart from assumptions</li></ul>
+              </div>
+            </section>
+
+            <!-- AI agents: the five roles and what each pushed on -->
+            <section class="view" id="cq-agents" role="tabpanel" aria-labelledby="cq-tab-agents">
+              <h4 class="view__title">AI agents</h4>
+              <ul class="agents">
+              <li class="agent">
+                <span class="agent__mark" aria-hidden="true">IN</span>
+                <h4 class="agent__role">Investor</h4>
+                <p class="agent__ask"><span>Asked</span>Is ₹2 lakh worth the risk, and what has to be true first?</p>
+                <p class="agent__raise"><span>Raised</span>Don’t buy equipment until a 12-hour, 3-day footfall count backs the location.</p>
+              </li>
+              <li class="agent">
+                <span class="agent__mark" aria-hidden="true">CO</span>
+                <h4 class="agent__role">Competitor</h4>
+                <p class="agent__ask"><span>Asked</span>Why would anyone switch from the shops already there?</p>
+                <p class="agent__raise"><span>Raised</span>Rivals’ medicinal-herb menus backfire, and their service breaks in the 11 AM to 3 PM rush.</p>
+              </li>
+              <li class="agent">
+                <span class="agent__mark" aria-hidden="true">CF</span>
+                <h4 class="agent__role">CFO</h4>
+                <p class="agent__ask"><span>Asked</span>Do the costs, break-even and payback hold up?</p>
+                <p class="agent__raise"><span>Raised</span>Flat 100-a-day demand ignores the monsoon, and juicer power costs were never benchmarked.</p>
+              </li>
+              <li class="agent">
+                <span class="agent__mark" aria-hidden="true">BC</span>
+                <h4 class="agent__role">Business consultant</h4>
+                <p class="agent__ask"><span>Asked</span>Can a 10×10 ft shop run cleanly every single day?</p>
+                <p class="agent__raise"><span>Raised</span>First-in, first-out cane stock, a hygiene routine, daily waste removal and an FSSAI licence first.</p>
+              </li>
+              <li class="agent">
+                <span class="agent__mark" aria-hidden="true">FA</span>
+                <h4 class="agent__role">Founder advisor</h4>
+                <p class="agent__ask"><span>Asked</span>What can’t an analyst with no food-business background see?</p>
+                <p class="agent__raise"><span>Raised</span>Hidden commercial-kitchen risks. Make hygiene visible; it’s what lets you charge more.</p>
+              </li>
+              </ul>
+            </section>
+
+            <!-- Assumptions: tap a card to swap the assumption for the evidence -->
+            <section class="view" id="cq-flips" role="tabpanel" aria-labelledby="cq-tab-flips">
+              <h4 class="view__title">Assumption versus evidence</h4>
+              <p class="feature__hint">Tap a card to see what the analysis found.</p>
+              <ul class="flip-list">
+                <li>
+                  <button class="flip" type="button" aria-expanded="false" data-flip>
+                    <span class="flip__side flip__side--front"><span class="flip__label">I assumed</span>A prime location will pull health-conscious professionals away from their usual juice spots.</span>
+                    <span class="flip__side flip__side--back"><span class="flip__label">The evidence said</span>Location alone proves nothing. Before buying equipment, count footfall at the site for 12 hours a day over 3 days.</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="flip" type="button" aria-expanded="false" data-flip>
+                    <span class="flip__side flip__side--front"><span class="flip__label">I assumed</span>A steady 100 customers a day, every day of the year.</span>
+                    <span class="flip__side flip__side--back"><span class="flip__label">The evidence said</span>Demand follows the weather. The model ignored seasonality, and a heavy monsoon could stretch the payback period a long way.</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="flip" type="button" aria-expanded="false" data-flip>
+                    <span class="flip__side flip__side--front"><span class="flip__label">I assumed</span>Wellness-style flavours will justify premium prices.</span>
+                    <span class="flip__side flip__side--back"><span class="flip__label">The evidence said</span>A competitor’s medicinal-herb menu put customers off on taste and price. Keep fruit infusions such as apple and beetroot, and keep sugarcane the star.</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="flip" type="button" aria-expanded="false" data-flip>
+                    <span class="flip__side flip__side--front"><span class="flip__label">I assumed</span>Electricity and water: to be decided later.</span>
+                    <span class="flip__side flip__side--back"><span class="flip__label">The evidence said</span>The cheap commercial juicer’s power use was never benchmarked, and crushed-cane waste needs a daily removal deal or it brings pests.</span>
+                  </button>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <p class="case__tools">NotebookLM, multi-agent prompting, spreadsheets, field observation</p>
         </article>
 
         <h3 class="subsection__title">In progress</h3>
