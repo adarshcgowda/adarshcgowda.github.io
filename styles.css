@@ -1144,6 +1144,36 @@ html:not(.js) .journey__kit {
   font-weight: 700;
 }
 
+/* A photo from the road: a print, slightly tilted, that straightens on hover */
+.chapter__photo {
+  width: min(100%, 16rem);
+  margin-top: 1.5rem;
+  padding: 0.6rem 0.6rem 0.75rem;
+  background: var(--paper);
+  border-radius: 4px;
+  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+
+.chapter__photo:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.chapter__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+.chapter__photo figcaption {
+  margin-top: 0.55rem;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
 /* With the script, each chapter gets room to breathe and comes into focus as it reaches the middle */
 .js .chapter {
   min-height: 46vh;
