@@ -1526,14 +1526,13 @@ html:not(.js) .journey__kit {
 
 .recognition__grid {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
   margin-top: 1rem;
 }
 
 .award {
-  grid-row: span 2;
   padding: 1rem;
   background: var(--paper-raised);
   border: 1px solid var(--grid);
@@ -1602,6 +1601,97 @@ html:not(.js) .journey__kit {
   content: " ↗";
 }
 
+/* Recognition notes: the original screenshots, pinned up like sticky notes */
+
+.notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding-top: 0.75rem;
+}
+
+.note {
+  position: relative;
+  padding: 0.6rem 0.6rem 0.85rem;
+  background: #fff4a8;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 14px 24px -12px rgba(27, 42, 65, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.note--left {
+  transform: rotate(-2.5deg);
+}
+
+.note--right {
+  margin-top: 1.5rem;
+  background: #ffe0ea;
+  transform: rotate(2deg);
+}
+
+/* The pin */
+.note::before {
+  content: "";
+  position: absolute;
+  top: -0.55rem;
+  left: 50%;
+  z-index: 1;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-left: -0.55rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff7a9c, var(--signal) 60%, #7d1239);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.35);
+}
+
+.note:hover,
+.note:focus-within {
+  z-index: 2;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08), 0 22px 34px -14px rgba(27, 42, 65, 0.5);
+  transform: rotate(0deg) scale(1.04);
+}
+
+.note a {
+  display: block;
+}
+
+.note img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.note figcaption {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.6rem;
+  color: var(--ink);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.note figcaption strong {
+  color: var(--signal);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.note figcaption span {
+  color: var(--ink-soft);
+}
+
+@media (max-width: 30rem) {
+  .notes {
+    gap: 1rem;
+  }
+
+  .note figcaption {
+    font-size: 0.75rem;
+  }
+}
+
 .chapter__facts a {
   color: var(--band);
   font-weight: 600;
@@ -1641,9 +1731,6 @@ html:not(.js) .journey__kit {
     grid-template-columns: 1fr;
   }
 
-  .award {
-    grid-row: auto;
-  }
 }
 
 /* Shared glyph strokes and fills */
