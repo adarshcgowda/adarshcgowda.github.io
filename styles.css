@@ -391,6 +391,58 @@ button {
   box-shadow: 0 0 0 3px rgba(47, 158, 107, 0.2);
 }
 
+/* Spatial tilt: the portrait leans toward the pointer, with its layers at different depths.
+   The script sets --rx/--ry (rotation) and --gx/--gy (where the light catches). */
+
+.js .portrait[data-tilt] {
+  --rx: 0deg;
+  --ry: 0deg;
+  --gx: 50%;
+  --gy: 30%;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.js .portrait[data-tilt].is-tilting {
+  transition-duration: 0.12s;
+}
+
+.js .portrait[data-tilt]::before {
+  transform: translateZ(-40px);
+}
+
+.js .portrait[data-tilt] picture {
+  display: block;
+  transform: translateZ(10px);
+}
+
+.js .portrait[data-tilt] .portrait__tag {
+  transform: translateZ(60px);
+}
+
+.portrait__glare {
+  display: none;
+}
+
+.js .portrait[data-tilt] .portrait__glare {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: 10px;
+  background: radial-gradient(circle at var(--gx) var(--gy), rgba(255, 255, 255, 0.45), transparent 55%);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateZ(11px);
+  transition: opacity 0.4s ease;
+}
+
+.js .portrait[data-tilt].is-tilting .portrait__glare {
+  opacity: 1;
+}
+
 @media (max-width: 46rem) {
   .hero__intro {
     grid-template-columns: 1fr;

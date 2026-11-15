@@ -384,6 +384,41 @@
     });
   }
 
+  // Hero: the portrait tilts toward the pointer. Mouse and pen follow on hover; touch follows a drag.
+
+  function initTilt() {
+    const card = $("[data-tilt]");
+    if (!card || reduceMotion) return;
+    const area = card.closest(".hero__intro") || card;
+    const MAX_X = 14, MAX_Y = 20;
+    let frame = 0;
+
+    const tilt = (e) => {
+      if (e.pointerType === "touch" && e.buttons === 0) return;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const r = card.getBoundingClientRect();
+        const dx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width * 1.5)));
+        const dy = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height * 0.9)));
+        card.style.setProperty("--ry", `${(dx * MAX_Y).toFixed(2)}deg`);
+        card.style.setProperty("--rx", `${(-dy * MAX_X).toFixed(2)}deg`);
+        card.style.setProperty("--gx", `${50 + dx * 40}%`);
+        card.style.setProperty("--gy", `${40 + dy * 40}%`);
+        card.classList.add("is-tilting");
+      });
+    };
+
+    const reset = () => {
+      cancelAnimationFrame(frame);
+      card.classList.remove("is-tilting");
+      ["--rx", "--ry"].forEach((p) => card.style.setProperty(p, "0deg"));
+    };
+
+    area.addEventListener("pointermove", tilt);
+    area.addEventListener("pointerleave", reset);
+    area.addEventListener("pointerup", (e) => { if (e.pointerType === "touch") reset(); });
+  }
+
   initProgress();
   initNav();
   initGame();
@@ -393,4 +428,5 @@
   initMethod();
   initFlips();
   initViews();
+  initTilt();
 })();
