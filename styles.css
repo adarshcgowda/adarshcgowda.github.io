@@ -1879,6 +1879,244 @@ html:not(.js) .journey__kit {
   }
 }
 
+/* Featured project: CaneIQ */
+
+.feature {
+  margin-top: 2.5rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background: var(--paper-raised);
+  border: 1px solid var(--grid);
+  border-top: 4px solid var(--signal);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.talk__badge--done {
+  background: #2f7d57;
+}
+
+.feature__title {
+  margin-top: 0.6rem;
+  font-size: var(--step-3);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.feature__lede {
+  max-width: 46rem;
+  margin-top: 0.85rem;
+  color: var(--ink-soft);
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.feature__facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 1.75rem;
+  border-top: 2px solid var(--ink);
+}
+
+.feature__facts li {
+  padding: 0.85rem 1rem 0 0;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  line-height: 1.35;
+}
+
+.feature__facts li + li {
+  padding-left: 1rem;
+  border-left: 1px solid var(--grid);
+}
+
+.feature__facts strong {
+  display: block;
+  color: var(--ink);
+  font-size: var(--step-2);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.feature__flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+  counter-reset: flow;
+}
+
+.feature__flow li {
+  padding-top: 0.75rem;
+  border-top: 2px solid var(--band);
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  counter-increment: flow;
+}
+
+.feature__flow li:last-child {
+  border-top-color: var(--ink);
+}
+
+.feature__step {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--ink);
+  font-size: var(--step-0);
+  font-weight: 650;
+}
+
+.feature__step::before {
+  content: counter(flow) ". ";
+  color: var(--signal);
+}
+
+.feature__subtitle {
+  margin-top: 2.25rem;
+  font-size: var(--step-1);
+  font-weight: 650;
+}
+
+.feature__hint {
+  display: none;
+}
+
+.js .feature__hint {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+
+/* Assumption cards: tap to swap the assumption for what the evidence said */
+
+.flip-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.flip {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-height: 8.5rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: default;
+}
+
+.flip__side {
+  display: block;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius);
+  line-height: 1.45;
+}
+
+.flip__side--front {
+  background: var(--paper);
+  border: 1px dashed var(--ink-soft);
+}
+
+.flip__side--back {
+  margin-top: 0.5rem;
+  background: var(--night);
+  color: var(--paper);
+}
+
+.flip__label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.flip__side--back .flip__label {
+  color: var(--signal-bright);
+}
+
+/* With the script, both sides share one slot and the card swaps on tap */
+.js .flip {
+  cursor: pointer;
+}
+
+.js .flip__side {
+  grid-area: 1 / 1;
+  margin: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.js .flip__side--back {
+  opacity: 0;
+  transform: translateY(6px);
+  visibility: hidden;
+}
+
+.js .flip[aria-expanded="true"] .flip__side--front {
+  opacity: 0;
+  transform: translateY(-6px);
+  visibility: hidden;
+}
+
+.js .flip[aria-expanded="true"] .flip__side--back {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.js .flip:hover .flip__side--front {
+  border-style: solid;
+  border-color: var(--ink);
+}
+
+.js .flip__side--front::after {
+  content: "Tap to check →";
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.feature__insight {
+  max-width: 50rem;
+  margin-top: 1.75rem;
+  padding: 1rem 1.15rem;
+  background: rgba(191, 215, 234, 0.35);
+  border-left: 4px solid var(--band);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.feature .case__foot {
+  margin-top: 1.75rem;
+}
+
+.project-list--tight {
+  margin-top: 1rem;
+}
+
+@media (max-width: 52rem) {
+  .feature__facts,
+  .feature__flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature__facts li:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .flip-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Skills */
 
 .skill-groups {

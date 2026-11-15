@@ -349,6 +349,14 @@
     }));
   }
 
+  // Projects: assumption cards swap to the evidence on tap
+
+  function initFlips() {
+    $$("[data-flip]").forEach((card) => card.addEventListener("click", () => {
+      card.setAttribute("aria-expanded", String(card.getAttribute("aria-expanded") !== "true"));
+    }));
+  }
+
   initProgress();
   initNav();
   initGame();
@@ -356,4 +364,5 @@
   initJourney();
   initCases();
   initMethod();
+  initFlips();
 })();
