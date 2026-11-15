@@ -1589,6 +1589,19 @@ html:not(.js) .journey__kit {
   font-size: 0.8125rem;
 }
 
+.quote__proof {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--band);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}
+
+.quote__proof::after {
+  content: " ↗";
+}
+
 .chapter__facts a {
   color: var(--band);
   font-weight: 600;
