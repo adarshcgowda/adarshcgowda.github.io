@@ -13,10 +13,10 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B2A41'/%3E%3Cpath d='M5 22 L11 18 L16 20 L21 13 L27 10' fill='none' stroke='%23BFD7EA' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='25' r='3' fill='%23E0457B'/%3E%3C/svg%3E">
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261116">
   <!-- Interactive layers switch on only when the script can run; without it every section reads as a plain page -->
   <script>document.documentElement.classList.add("js");</script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20261116" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -144,39 +144,26 @@
       <div class="wrap">
         <p class="eyebrow">The 30-second version</p>
         <h2 class="section__title" id="snapshot-title">Snapshot</h2>
-        <dl class="readouts">
-          <div class="readout">
-            <dt>Countries in scope</dt>
-            <dd data-count>24</dd>
-          </div>
-          <div class="readout">
-            <dt>Delivery platforms tracked</dt>
-            <dd data-count>20+</dd>
-          </div>
-          <div class="readout">
-            <dt>Faster heaviest pages after a rebuild I led</dt>
-            <dd data-count>~65%</dd>
-          </div>
-          <div class="readout">
-            <dt>Lines of production analytics code, shipped with AI coding agents</dt>
-            <dd data-count>~20k</dd>
-          </div>
-        </dl>
-        <div class="snapshot__grid">
-          <ul class="snapshot__facts">
-            <li><span>Now</span> Senior data analyst at Uber Eats, Bangalore, as an external consultant via Indium</li>
-            <li><span>Before</span> Tesla, ZF Group and Tata Motors</li>
-            <li><span>Lived and worked</span> India and Germany</li>
-            <li><span>Speaking</span> <a href="#speaking">Invited keynote, Future of Data Visualization Summit 2024</a></li>
-            <li><span>Side project</span> <a href="#caneiq">CaneIQ, an AI co-founder for a business decision</a></li>
-            <li><span>Recognised</span> <a href="#recognition">Customer Champion award and a Shining Star Award</a></li>
-            <li><span>Certified</span> <a href="#certifications">Prompt Engineering, SWAYAM (86.5%)</a></li>
-            <li><span>Open to</span> Senior analyst roles in India and Europe, including relocation</li>
-          </ul>
-          <div class="snapshot__actions">
-            <a class="button button--solid" href="assets/Adarsh_Chikkaswamygowda_Resume.pdf" download>Download resume (PDF)</a>
-            <a class="button" href="#contact">Get in touch</a>
-          </div>
+        <p class="snap-lede">I’m a senior data analyst who makes numbers <strong>safe to decide on</strong>. At Uber Eats I keep competitive pricing and merchandise data correct across 24 countries and 20+ delivery apps, with automatic checks that catch a wrong number before anyone acts on it.</p>
+        <ul class="pillars" aria-label="Why you can trust my numbers">
+          <li class="pillar"><span class="pillar__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg></span><h3>I think analytically</h3><p>I ask whether a number can survive a decision, and test it against its own history.</p><p class="pillar__proof"><b data-count>213</b> tables under observation</p></li>
+          <li class="pillar"><span class="pillar__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><h3>I’m reliable</h3><p>Checks and alerts run without me, so a broken feed is found fast.</p><p class="pillar__proof"><b data-count>24</b> countries kept consistent</p></li>
+          <li class="pillar"><span class="pillar__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><h3>I explain clearly</h3><p>I turn findings into plain language that commercial teams can use.</p><p class="pillar__proof">Pricing work that helped improve sales</p></li>
+          <li class="pillar"><span class="pillar__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span><h3>I ship, with guardrails</h3><p>I build with AI coding agents, under specs, decision logs and tests.</p><p class="pillar__proof"><b data-count>~20k</b> lines of production analytics code</p></li>
+        </ul>
+        <ul class="snap-tiles">
+          <li class="snap-tile snap-tile--now"><span class="snap-tile__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><span class="snap-tile__label">Now <i class="live-dot" aria-hidden="true"></i></span><span class="snap-tile__text">Senior data analyst at Uber Eats, Bangalore, as an external consultant via Indium</span></li>
+          <li class="snap-tile"><span class="snap-tile__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></span><span class="snap-tile__label">Before</span><span class="snap-tile__text snap-tile__chips"><b>Tesla</b><b>ZF Group</b><b>Tata Motors</b></span></li>
+          <li class="snap-tile"><span class="snap-tile__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="snap-tile__label">Lived and worked</span><span class="snap-tile__text snap-tile__chips"><b>India</b><b>Germany</b></span></li>
+          <li class="snap-tile snap-tile--link"><a href="#speaking"><span class="snap-tile__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><span class="snap-tile__label">Speaking</span><span class="snap-tile__text">Invited keynote, Future of Data Visualization Summit 2024</span><span class="snap-tile__go" aria-hidden="true">→</span></a></li>
+          <li class="snap-tile snap-tile--link"><a href="#caneiq"><span class="snap-tile__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 5.3L20 9l-4.3 3.8L17 18.5 12 15.6 7 18.5l1.3-5.7L4 9l5.8-.7z"/></svg></span><span class="snap-tile__label">Side project</span><span class="snap-tile__text">CaneIQ, an AI co-founder for a business decision</span><span class="snap-tile__go" aria-hidden="true">→</span></a></li>
+          <li class="snap-tile snap-tile--link"><a href="#recognition"><span class="snap-tile__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 21l5-3 5 3-1.5-7"/></svg></span><span class="snap-tile__label">Recognised</span><span class="snap-tile__text">Customer Champion award and a Shining Star Award</span><span class="snap-tile__go" aria-hidden="true">→</span></a></li>
+          <li class="snap-tile snap-tile--link"><a href="#certifications"><span class="snap-tile__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H4zM8 20h8M12 16v4"/><path d="M8 10l3 3 5-5"/></svg></span><span class="snap-tile__label">Certified</span><span class="snap-tile__text">Prompt Engineering, SWAYAM (86.5%)</span><span class="snap-tile__go" aria-hidden="true">→</span></a></li>
+          <li class="snap-tile snap-tile--open"><span class="snap-tile__icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="snap-tile__label">Open to</span><span class="snap-tile__text">Senior analyst roles in India and Europe, including relocation</span></li>
+        </ul>
+        <div class="snapshot__actions">
+          <a class="button button--solid" href="assets/Adarsh_Chikkaswamygowda_Resume.pdf" download>Download resume (PDF)</a>
+          <a class="button" href="#contact">Get in touch</a>
         </div>
       </div>
     </section>
@@ -282,7 +269,7 @@
               <h3 class="case__title">Business problem solving</h3>
               <p class="case__outcome">Start from the decision, not the tool.</p>
               <ul class="pillar__areas"><li>Requirements</li><li>Metric definition</li><li>Commercial analysis</li><li>Demand and pricing analysis</li><li>Root-cause analysis</li><li>Stakeholder communication</li><li>Recommendations in business language</li></ul>
-              <p class="pillar__line"><span>Evidence</span>ZF: pricing work that contributed to 25% sales growth in six months. Tata: 24% better product metadata and 90% better e-brochure data quality.</p>
+              <p class="pillar__line"><span>Evidence</span>ZF: pricing work that helped improve sales. Tata: 24% better product metadata and 90% better e-brochure data quality.</p>
             </article>
           </div>
         </div>
@@ -298,7 +285,7 @@
 
         <div class="journey__layout">
           <aside class="journey__panel" aria-hidden="true">
-            <svg class="route" viewBox="0 0 320 470">
+            <svg class="route" viewBox="0 0 520 175">
               <defs>
                 <!-- Badges the walker carries between stops. Flags are exact; ZF and SRH are simplified marks. -->
                 <g id="badge-de"><rect x="-17" y="-12" width="34" height="8" fill="#000"/><rect x="-17" y="-4" width="34" height="8" fill="#DD0000"/><rect x="-17" y="4" width="34" height="8" fill="#FFCE00"/></g>
@@ -309,16 +296,16 @@
                 <g id="badge-tesla"><rect x="-17" y="-12" width="34" height="24" rx="3" fill="#fff"/><path transform="translate(-9.5,-9.5) scale(.8)" fill="#E82127" d="M12 5.362l2.475-3.026s4.245.09 8.471 2.054c-1.082 1.636-3.231 2.438-3.231 2.438-.146-1.439-1.154-1.79-4.354-1.79L12 24 8.619 5.034c-3.18 0-4.188.354-4.335 1.792 0 0-2.146-.795-3.229-2.43C5.28 2.431 9.525 2.34 9.525 2.34L12 5.362l-.004.002H12v-.002zm0-3.899c3.415-.03 7.326.528 11.328 2.28.535-.968.672-1.395.672-1.395C19.625.612 15.528.015 12 0 8.472.015 4.375.61 0 2.349c0 0 .195.525.672 1.396C4.674 1.989 8.585 1.435 12 1.46v.003z"/></g>
                 <g id="badge-ubereats"><rect x="-17" y="-12" width="34" height="24" rx="3" fill="#fff"/><path transform="translate(-11,-11) scale(.92)" fill="#06C167" d="M0 2.8645v4.9972c0 1.8834 1.3315 3.1297 3.0835 3.1297a2.9652 2.9652 0 0 0 2.1502-.876v.7425H6.445V2.8645H5.223v4.9339c0 1.2642-.8696 2.1198-1.9954 2.122-1.1386-.0023-1.997-.834-1.997-2.122V2.8645zm7.3625 0v7.9934h1.163v-.7318a2.9915 2.9915 0 0 0 2.1177.876c1.714.048 3.1295-1.3283 3.1295-3.0429s-1.4155-3.091-3.1295-3.0429a2.9674 2.9674 0 0 0-2.107.876V2.8645zm9.8857 2.0561c-1.6752-.0074-3.0369 1.3492-3.0356 3.0245 0 1.7366 1.3732 3.0373 3.1537 3.0373a3.123 3.123 0 0 0 2.5578-1.2438l-.8495-.6177a2.0498 2.0498 0 0 1-1.7083.8585c-.9763.0126-1.8147-.6915-1.971-1.6553h4.818v-.379c0-1.734-1.254-3.0238-2.9638-3.0245zm6.1632.0667a1.5943 1.5943 0 0 0-1.376.7657v-.7186h-1.163v5.8235h1.1741V7.5465c0-.9023.5581-1.4847 1.3268-1.4847h.4949V4.9886c-.1576.0013-.3186-.0009-.4568-.0013zm-6.2034.944a1.844 1.844 0 0 1 1.8337 1.486H15.424a1.844 1.844 0 0 1 1.784-1.486zm-6.6589.0056c1.1223-.0084 2.0365.8992 2.0364 2.0215-.0026 1.1203-.914 2.0258-2.0343 2.021a2.0151 2.0151 0 0 1-1.4159-.5987A2.0152 2.0152 0 0 1 8.55 7.9592a2.0152 2.0152 0 0 1 .5838-1.422 2.0152 2.0152 0 0 1 1.4153-.6003zM0 12.9864v7.9716h5.7222v-1.3666H1.5458v-1.971h4.0647v-1.314H1.5458v-1.9556h4.1764v-1.3644zm14.5608.4097v1.6861h-1.1519v1.338h1.1545v3.143c0 .7927.5712 1.4209 1.6005 1.4209h1.6425L17.8 19.646h-1.1412c-.3482 0-.5714-.1509-.5714-.464v-2.7683H17.8v-1.3316h-1.7062v-1.686zm-5.2974 1.5275c-1.7348-.0103-3.141 1.4035-3.1214 3.1382.0196 1.7346 1.4575 3.1163 3.1915 3.0668a2.9915 2.9915 0 0 0 1.912-.6655v.532h1.5175v-5.9129h-1.509v.5257a3.0047 3.0047 0 0 0-1.9205-.6835c-.0244-.0007-.0492-.0006-.0701-.0008zm11.771.0077c-1.5855 0-2.7002.6437-2.7002 1.8854 0 .8607.6132 1.4213 1.936 1.695l1.4478.3286c.5694.1095.7224.2585.7224.4906 0 .3701-.438.6022-1.1279.6022-.876 0-1.3774-.1907-1.5723-.8477h-1.533c.219 1.2307 1.1563 2.05 3.0484 2.05h.0022c1.752 0 2.7422-.819 2.7422-1.9534 0-.8059-.5847-1.4084-1.8089-1.6668l-1.2943-.2605c-.7511-.1358-.988-.2738-.988-.5454 0-.357.3616-.5757 1.0295-.5757.7227 0 1.2527.1925 1.406.8473h1.5175c-.0854-1.2286-.9899-2.0497-2.8273-2.0497zM9.467 16.1815c1.0092.0096 1.8188.8369 1.8067 1.8461.0014 1.0046-.8198 1.816-1.8243 1.8025-1.0075-.0048-1.8203-.8256-1.8155-1.833.0048-1.0076.8255-1.8204 1.833-1.8156z"/></g>
               </defs>
-              <path class="road__edge" d="M70,30 C70,65 250,65 250,100 C250,135 70,135 70,170 C70,205 250,205 250,240 C250,275 70,275 70,310 C70,345 250,345 250,380 C250,412.5 70,412.5 70,445"/>
-              <path class="road__asphalt" d="M70,30 C70,65 250,65 250,100 C250,135 70,135 70,170 C70,205 250,205 250,240 C250,275 70,275 70,310 C70,345 250,345 250,380 C250,412.5 70,412.5 70,445"/>
-              <path class="road__centre" d="M70,30 C70,65 250,65 250,100 C250,135 70,135 70,170 C70,205 250,205 250,240 C250,275 70,275 70,310 C70,345 250,345 250,380 C250,412.5 70,412.5 70,445"/>
-              <circle class="road__stop" cx="70" cy="30" r="5" data-name="2019 · Tata Motors"/>
-              <circle class="road__stop" cx="250" cy="100" r="5" data-name="2020 · Berlin"/>
-              <circle class="road__stop" cx="70" cy="170" r="5" data-name="2022 · ZF Group"/>
-              <circle class="road__stop" cx="250" cy="240" r="5" data-name="2023 · SRH"/>
-              <circle class="road__stop" cx="70" cy="310" r="5" data-name="2023 · Tesla"/>
-              <circle class="road__stop" cx="250" cy="380" r="5" data-name="2024 · Uber Eats"/>
-              <circle class="road__stop road__stop--next" cx="70" cy="445" r="5" data-name="Next · your team?"/>
+              <path class="road__edge" d="M40.0,92 C76.7,92 76.7,135 113.3,135 C150.0,135 150.0,92 186.7,92 C223.3,92 223.3,135 260.0,135 C296.7,135 296.7,92 333.3,92 C370.0,92 370.0,135 406.7,135 C443.3,135 443.3,92 480.0,92"/>
+              <path class="road__asphalt" d="M40.0,92 C76.7,92 76.7,135 113.3,135 C150.0,135 150.0,92 186.7,92 C223.3,92 223.3,135 260.0,135 C296.7,135 296.7,92 333.3,92 C370.0,92 370.0,135 406.7,135 C443.3,135 443.3,92 480.0,92"/>
+              <path class="road__centre" d="M40.0,92 C76.7,92 76.7,135 113.3,135 C150.0,135 150.0,92 186.7,92 C223.3,92 223.3,135 260.0,135 C296.7,135 296.7,92 333.3,92 C370.0,92 370.0,135 406.7,135 C443.3,135 443.3,92 480.0,92"/>
+              <circle class="road__stop" cx="40.0" cy="92" r="5" data-name="2019 · Tata Motors"/>
+              <circle class="road__stop" cx="113.3" cy="135" r="5" data-name="2020 · Berlin"/>
+              <circle class="road__stop" cx="186.7" cy="92" r="5" data-name="2022 · ZF Group"/>
+              <circle class="road__stop" cx="260.0" cy="135" r="5" data-name="2023 · SRH"/>
+              <circle class="road__stop" cx="333.3" cy="92" r="5" data-name="2023 · Tesla"/>
+              <circle class="road__stop" cx="406.7" cy="135" r="5" data-name="2024 · Uber Eats"/>
+              <circle class="road__stop road__stop--next" cx="480.0" cy="92" r="5" data-name="Next · your team?"/>
               <g class="walker" data-walker>
                 <ellipse class="walker__shadow" rx="13" ry="3"/>
                 <g class="walker__placard" data-placard opacity="0" transform="translate(0,-52) scale(1.15)"><line class="walker__pole" x1="0" y1="22" x2="0" y2="-2"/><g data-placard-items transform="translate(0,-14)"></g></g>
@@ -336,9 +323,62 @@
             <div class="journey__now">
               <p class="journey__place" data-journey-place>Bangalore, India · 2024</p>
               <p class="journey__question" data-journey-question>“Can 24 countries trust this metric?”</p>
-              <p class="journey__kit-label">Toolkit so far</p>
-              <ul class="journey__kit" data-journey-tools></ul>
             </div>
+              <div class="tk-wrap">
+                <p class="tk-title">Toolkit</p>
+                <ol class="tk">
+                <li class="tk__row" style="--i:0">
+                  <div class="tk__bowl"><span>AI-assisted analytics</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/ai.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">AI basics</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/cursor.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Cursor</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/claude.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Claude</span></li><li class="tk__tool"><span class="tk__icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1a3f77" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16zM14 6l3 3"/></svg></span><span class="tk__name">Prompt engineering</span></li></ul>
+                </li>
+                <li class="tk__row" style="--i:1">
+                  <div class="tk__bowl"><span>AI agents &amp; chatbots</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1a3f77" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 10h.01M12 10h.01M15.5 10h.01"/></svg></span><span class="tk__name">Chatbot creation</span></li><li class="tk__tool"><span class="tk__icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1a3f77" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16.5h5"/></svg></span><span class="tk__name">AI agents</span></li><li class="tk__tool"><span class="tk__icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1a3f77" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM18 16l.8 2.2L21 19l-2.2.8L18 22l-.8-2.2L15 19l2.2-.8z"/></svg></span><span class="tk__name">Agent skills</span></li></ul>
+                </li>
+                <li class="tk__row" style="--i:2">
+                  <div class="tk__bowl"><span>Data sources</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><span class="tk__mono" aria-hidden="true">SQL</span></span><span class="tk__name">SQL databases</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/microsoftexcel.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">CSV / Excel</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/googlesheets.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Google Sheets</span></li><li class="tk__tool"><span class="tk__icon"><span class="tk__mono" aria-hidden="true">API</span></span><span class="tk__name">APIs</span></li><li class="tk__tool"><span class="tk__icon"><span class="tk__mono" aria-hidden="true">www</span></span><span class="tk__name">Web & apps</span></li></ul>
+                </li>
+                <li class="tk__row" style="--i:3">
+                  <div class="tk__bowl"><span>Data ingestion</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/apachekafka.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Apache Kafka</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/airbyte.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Airbyte</span></li></ul>
+                </li>
+                <li class="tk__row" style="--i:4">
+                  <div class="tk__bowl"><span>Data storage & warehousing</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><span class="tk__mono" aria-hidden="true">S3</span></span><span class="tk__name">Amazon S3</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/googlecloudstorage.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Cloud Storage</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/snowflake.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Snowflake</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/googlebigquery.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">BigQuery</span></li><li class="tk__tool"><span class="tk__icon"><span class="tk__mono" aria-hidden="true">Syn</span></span><span class="tk__name">Azure Synapse</span></li></ul>
+                </li>
+                <li class="tk__row" style="--i:5">
+                  <div class="tk__bowl"><span>Data processing & transformation</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/pandas.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">pandas</span></li><li class="tk__tool"><span class="tk__icon"><span class="tk__mono" aria-hidden="true">Beam</span></span><span class="tk__name">Apache Beam</span></li><li class="tk__tool"><span class="tk__icon"><span class="tk__mono" aria-hidden="true">dbt</span></span><span class="tk__name">dbt</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/databricks.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Databricks</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/apachespark.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Apache Spark</span></li></ul>
+                </li>
+                <li class="tk__row" style="--i:6">
+                  <div class="tk__bowl"><span>Data analysis & modeling</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><span class="tk__mono" aria-hidden="true">σ</span></span><span class="tk__name">statsmodels</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/scikitlearn.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">scikit-learn</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/python.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Python</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/jupyter.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Jupyter Notebook</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/r.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">R</span></li></ul>
+                </li>
+                <li class="tk__row" style="--i:7">
+                  <div class="tk__bowl"><span>Data visualization & BI</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/microsoftexcel.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Excel / Sheets</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/apachesuperset.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Apache Superset</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/powerbi.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Power BI</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/tableau.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Tableau</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/html5.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">HTML & CSS</span></li></ul>
+                </li>
+                <li class="tk__row" style="--i:8">
+                  <div class="tk__bowl"><span>Deployment & sharing</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/github.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">GitHub Pages</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/fastapi.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">FastAPI</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/streamlit.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Streamlit</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/flask.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Flask</span></li></ul>
+                </li>
+                <li class="tk__row" style="--i:9">
+                  <div class="tk__bowl"><span>Data quality, orchestration & monitoring</span></div>
+                  <i class="tk__arrow" aria-hidden="true"></i>
+                  <ul class="tk__card"><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/grafana.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Grafana</span></li><li class="tk__tool"><span class="tk__icon"><img src="assets/logos/apacheairflow.svg" alt="" width="40" height="40" loading="lazy"></span><span class="tk__name">Apache Airflow</span></li></ul>
+                </li>
+                </ol>
+              </div>
           </aside>
 
           <ol class="timeline">
@@ -359,6 +399,10 @@
               <div class="chapter__body">
                 <h3 class="chapter__title">Berlin <span class="chapter__role">Master’s in Technology Management, SRH University</span></h3>
                 <p>I moved to Germany to study AI, data analysis and programming in R and Python, and graduated with a 1.9.</p>
+                <figure class="chapter__photo">
+                  <img src="assets/srh-graduation.jpg" width="900" height="872" loading="lazy" alt="A row of SRH University master’s graduates in black gowns and grey stoles, smiling and holding red certificate folders on stage">
+                  <figcaption>Graduation day, SRH University</figcaption>
+                </figure>
               </div>
             </li>
 
@@ -368,7 +412,7 @@
                 <h3 class="chapter__title">ZF Group <span class="chapter__role">Data analyst</span></h3>
                 <p>I built Power BI dashboards for sales, product performance and demand. I also ran aftermarket pricing analysis and explained it to commercial teams in plain terms.</p>
                 <ul class="chapter__facts">
-                  <li><strong>25%</strong> sales growth in six months, which my pricing work contributed to</li>
+                  <li>Pricing work that helped improve sales</li>
                 </ul>
                 <figure class="chapter__photo chapter__photo--pro">
                   <img src="assets/zf-hannover.jpg" width="640" height="868" loading="lazy" alt="Adarsh outside the ZF Group office in Hannover, with the ZF logo on the roof behind him">
@@ -414,6 +458,10 @@
                   <li><strong>213</strong> warehouse tables under observation</li>
                   <li><a href="#recognition">Customer Champion award</a></li>
                 </ul>
+                <figure class="chapter__photo chapter__photo--pro">
+                  <img src="assets/uber-office.jpg" width="720" height="882" loading="lazy" alt="Adarsh standing in front of the Uber sign in the office lobby, in a black shirt and grey trousers with an ID lanyard">
+                  <figcaption>At the Uber office</figcaption>
+                </figure>
               </div>
             </li>
 

@@ -109,18 +109,7 @@
     const part = (name) => $(`[data-w=${name}]`, walker);
     const place = $("[data-journey-place]", root);
     const question = $("[data-journey-question]", root);
-    const kit = $("[data-journey-tools]", root);
-    const toolsAt = chapters.map((c) => c.dataset.tools.split(",").map((t) => t.trim()).filter(Boolean));
     const total = road.getTotalLength();
-
-    // Logos for the toolkit chips (tools without a logo stay text-only), and which tools count as AI
-    const LOGO = {
-      "Excel": ["microsoftexcel"], "R": ["r"], "Python": ["python"], "Power BI": ["powerbi"],
-      "scikit-learn": ["scikitlearn"], "SQL Server": ["microsoftsqlserver"], "Tableau": ["tableau"],
-      "pandas": ["pandas"], "Flask": ["flask"], "Slack alerting": ["slack"],
-      "AI fundamentals": ["ai"], "AI coding agents": ["cursor", "claude"],
-    };
-    const AI_TOOLS = new Set(["AI fundamentals", "AI coding agents", "scikit-learn", "Segmentation"]);
 
     // What the walker carries on the way to each stop
     const CARRY = { 1: ["de"], 2: ["zf", "hannover"], 3: ["srh"], 4: ["tesla"], 5: ["in", "ubereats"] };
@@ -169,22 +158,6 @@
       roadLabel.textContent = stopDots[i].dataset.name;
       place.textContent = chapters[i].dataset.place;
       question.textContent = `“${chapters[i].dataset.question}”`;
-      const chips = toolsAt.slice(0, i + 1).flatMap((tools, k) => tools.map((tool) => ({ tool, fresh: k === i })));
-      chips.sort((a, b) => AI_TOOLS.has(b.tool) - AI_TOOLS.has(a.tool));
-      kit.replaceChildren(...chips.map(({ tool, fresh }) => {
-        const li = document.createElement("li");
-        (LOGO[tool] || []).forEach((name) => {
-          const img = document.createElement("img");
-          img.className = "kit__logo";
-          img.src = `assets/logos/${name}.svg`;
-          img.alt = "";
-          img.width = img.height = 14;
-          li.append(img);
-        });
-        li.append(tool);
-        if (fresh) li.className = "is-new";
-        return li;
-      }));
     };
 
     const setPlacard = (dest) => {
@@ -228,10 +201,9 @@
       placard.setAttribute("opacity", Math.max(0, fade).toFixed(2));
 
       // The single label rides beside the walker, on whichever side has room.
-      const right = pos.x < 160;
-      roadLabel.setAttribute("x", right ? pos.x + 32 : pos.x - 32);
-      roadLabel.setAttribute("y", pos.y - 24);
-      roadLabel.setAttribute("text-anchor", right ? "start" : "end");
+      roadLabel.setAttribute("x", Math.min(450, Math.max(70, pos.x)));
+      roadLabel.setAttribute("y", 170);
+      roadLabel.setAttribute("text-anchor", "middle");
 
       activate(Math.round(Math.min(stopAt.length - 1, Math.max(0, i + (frac > 0.5 ? 1 : 0)))));
     };
