@@ -13,10 +13,10 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B2A41'/%3E%3Cpath d='M5 22 L11 18 L16 20 L21 13 L27 10' fill='none' stroke='%23BFD7EA' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='25' r='3' fill='%23E0457B'/%3E%3C/svg%3E">
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261117a">
+  <link rel="stylesheet" href="styles.css?v=20261117c">
   <!-- Interactive layers switch on only when the script can run; without it every section reads as a plain page -->
   <script>document.documentElement.classList.add("js");</script>
-  <script src="script.js?v=20261117a" defer></script>
+  <script src="script.js?v=20261117c" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -65,7 +65,7 @@
               <span class="hero__w" style="--i:8;--x:-1rem;--y:1.5rem;--r:-3deg">decision</span>
               <span class="hero__w" style="--i:9;--x:1.5rem;--y:-1rem;--r:3deg">on it.</span>
             </h1>
-            <p class="hero__lede" data-enter style="--d:1">Senior data analyst at Uber Eats (via Indium). I build the checks, alerts and dashboards that make data trustworthy enough to act on — since 2019 across automotive, manufacturing and food delivery.</p>
+            <p class="hero__lede" data-enter style="--d:1">Senior data analyst at Uber Eats (via Indium). I build the checks, alerts and dashboards that make data trustworthy enough to act on. Since 2019, across automotive, manufacturing and food delivery.</p>
             <div class="hero__cta" data-enter style="--d:2">
               <a class="button button--solid" href="#cases">See case files</a>
               <a class="button" href="assets/Adarsh_Chikkaswamygowda_Resume.pdf" download>Download resume (PDF)</a>
@@ -77,6 +77,12 @@
               <li style="--i:3">Statistical analytics</li>
               <li style="--i:4">Data automation</li>
               <li style="--i:5">AI-assisted analytics</li>
+            </ul>
+            <ul class="hero__proof" aria-label="At a glance" data-enter style="--d:3">
+              <li><b data-count>213</b><span>tables under observation</span></li>
+              <li><b data-count>24</b><span>countries kept consistent</span></li>
+              <li><b data-count>20+</b><span>delivery apps covered</span></li>
+              <li><b>2019</b><span>working with data since</span></li>
             </ul>
           </div>
 
@@ -101,14 +107,14 @@
 
         <figure class="hero-chart hero-chart--lead" data-game>
           <div class="game__bar">
-            <p class="game__prompt"><strong>Try it.</strong> Is one of these months wrong? Look first, then switch on a baseline.</p>
+            <p class="game__prompt"><strong>Try it.</strong> One of these 25 months is wrong. Click the one you’d check first.</p>
             <div class="game__actions" role="group" aria-label="Chart view">
               <button class="chip-button is-selected" type="button" aria-pressed="true" data-view="eye">By eye</button>
               <button class="chip-button" type="button" aria-pressed="false" data-view="sys" data-baseline-nudge>With a baseline</button>
             </div>
           </div>
           <div class="hero-chart__plot">
-            <svg class="hero-chart__svg" viewBox="0 0 1000 250" role="img" aria-labelledby="hero-chart-title hero-chart-desc">
+            <svg class="hero-chart__svg" viewBox="0 60 1000 190" role="img" aria-labelledby="hero-chart-title hero-chart-desc">
               <title id="hero-chart-title">A growing metric with one value outside its expected range</title>
               <desc id="hero-chart-desc">A monthly line rises steadily inside a shaded band showing its rolling baseline. Month 19 drops well below the band and is flagged.</desc>
               <path class="hero-chart__band" d="M20,174 L60,170 L100,166 L140,161 L180,157 L220,153 L260,149 L300,145 L340,140 L380,136 L420,132 L460,128 L500,124 L540,119 L580,115 L620,111 L660,107 L700,103 L740,98 L780,94 L820,90 L860,86 L900,82 L940,77 L980,73 L980,125 L940,129 L900,134 L860,138 L820,142 L780,146 L740,150 L700,155 L660,159 L620,163 L580,167 L540,171 L500,176 L460,180 L420,184 L380,188 L340,192 L300,197 L260,201 L220,205 L180,209 L140,213 L100,218 L60,222 L20,226 Z"/>
@@ -153,6 +159,11 @@
             </li>
           </ul>
         </div>
+
+        <p class="hero__cue" data-enter style="--d:4">
+          <a href="#snapshot">Keep scrolling <span class="hero__cue-arrow" aria-hidden="true">↓</span></a>
+          <a href="#off-the-clock">Off the clock: bungee, scuba, whale sharks <span aria-hidden="true">→</span></a>
+        </p>
       </div>
     </section>
 
@@ -1068,6 +1079,92 @@
           <div><dt>AI <em>workflow</em></dt><dd>Cursor and Claude as governed coding agents, NotebookLM (CaneIQ), Prompt Engineering certification</dd></div>
           <div><dt>Practising <em>side projects</em></dt><dd>dbt, DuckDB and experiment design on public or simulated data. Practice, not claimed as production.</dd></div>
         </dl>
+      </div>
+    </section>
+
+    <!-- Chapter 6: off the clock. Travel and adventure photos, all square so the grid reads as a gallery.
+         Each tile links to the full photo, so it works without script; script.js opens it in a lightbox. -->
+    <section class="section offclock" id="off-the-clock" aria-labelledby="offclock-title">
+      <div class="wrap">
+        <p class="eyebrow">Chapter 6 · Off the clock</p>
+        <h2 class="section__title" id="offclock-title">Outside work</h2>
+        <p class="section__lede">Not a bookworm. Away from the screen I’m usually travelling, in the water or covered in mud, and that is how I keep the balance.</p>
+
+        <ul class="gallery">
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/gallery/01-merlion-full.jpg" data-full-webp="assets/gallery/01-merlion-full.webp">
+              <picture>
+                <source srcset="assets/gallery/01-merlion-800.webp" type="image/webp">
+                <img src="assets/gallery/01-merlion-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh in a light blue shirt and sunglasses in front of the Merlion fountain in Singapore">
+              </picture>
+              <span class="gallery__cap">Singapore</span>
+            </a>
+          </li>
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/gallery/02-whale-shark-full.jpg" data-full-webp="assets/gallery/02-whale-shark-full.webp">
+              <picture>
+                <source srcset="assets/gallery/02-whale-shark-800.webp" type="image/webp">
+                <img src="assets/gallery/02-whale-shark-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh snorkelling in open blue water with a whale shark swimming behind him">
+              </picture>
+              <span class="gallery__cap">Swimming with a whale shark</span>
+            </a>
+          </li>
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/gallery/03-atv-full.jpg" data-full-webp="assets/gallery/03-atv-full.webp">
+              <picture>
+                <source srcset="assets/gallery/03-atv-800.webp" type="image/webp">
+                <img src="assets/gallery/03-atv-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh in a helmet riding an ATV through a muddy puddle, mud spraying behind the wheel, with jungle behind">
+              </picture>
+              <span class="gallery__cap">ATV through the mud</span>
+            </a>
+          </li>
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/gallery/04-bungee-full.jpg" data-full-webp="assets/gallery/04-bungee-full.webp">
+              <picture>
+                <source srcset="assets/gallery/04-bungee-800.webp" type="image/webp">
+                <img src="assets/gallery/04-bungee-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh hanging upside down on a bungee cord, the valley a blur of speed behind him">
+              </picture>
+              <span class="gallery__cap">Bungee, upside down</span>
+            </a>
+          </li>
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/gallery/05-scuba-full.jpg" data-full-webp="assets/gallery/05-scuba-full.webp">
+              <picture>
+                <source srcset="assets/gallery/05-scuba-800.webp" type="image/webp">
+                <img src="assets/gallery/05-scuba-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh scuba diving over a coral reef, one arm stretched out toward a school of fish">
+              </picture>
+              <span class="gallery__cap">Scuba diving</span>
+            </a>
+          </li>
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/gallery/06-river-full.jpg" data-full-webp="assets/gallery/06-river-full.webp">
+              <picture>
+                <source srcset="assets/gallery/06-river-800.webp" type="image/webp">
+                <img src="assets/gallery/06-river-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh mid-flip jumping from a raft into a green river, with kayaks and forested hills behind">
+              </picture>
+              <span class="gallery__cap">River jump</span>
+            </a>
+          </li>
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/gallery/07-jetski-full.jpg" data-full-webp="assets/gallery/07-jetski-full.webp">
+              <picture>
+                <source srcset="assets/gallery/07-jetski-800.webp" type="image/webp">
+                <img src="assets/gallery/07-jetski-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh in an orange life jacket riding a jet ski, a white wake behind him and a pier in the distance">
+              </picture>
+              <span class="gallery__cap">Jet ski</span>
+            </a>
+          </li>
+          <li class="gallery__item">
+            <a class="gallery__link" href="assets/gallery/08-bungee-dive-full.jpg" data-full-webp="assets/gallery/08-bungee-dive-full.webp">
+              <picture>
+                <source srcset="assets/gallery/08-bungee-dive-800.webp" type="image/webp">
+                <img src="assets/gallery/08-bungee-dive-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh diving forward off a bungee platform, arms out, the cord trailing behind him">
+              </picture>
+              <span class="gallery__cap">Bungee, the leap</span>
+            </a>
+          </li>
+        </ul>
+        <p class="gallery__note">That’s me in every frame. Tap a photo to see it whole.</p>
       </div>
     </section>
 

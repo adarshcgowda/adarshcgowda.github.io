@@ -119,24 +119,68 @@
     if (!fig) return;
     const status = $("[data-game-status]", fig);
     const buttons = $$("[data-view]", fig);
+    const svg = $("svg", fig);
+    const line = $("[data-trend-line]", fig);
+    const flag = $(".hero-chart__dot", fig);
+    const more = ' <a class="game__more" href="#cases">See how I do it \u2192</a>';
+    const reveal =
+      "Month 19 dropped to 384 when 600\u2013912 was expected. Spotting it by eye works for one chart. I build systems that do it automatically across 24 countries and 20+ platforms, and attach a reason to every flag." +
+      more;
     const copy = {
       eye: "Illustrative series. By eye, one dip is easy to explain away.",
-      sys: "<strong>With a baseline.</strong> Month 19 dropped to 384 when 600–912 was expected. Spotting it by eye works for one chart. I build systems that do it automatically across 24 countries and 20+ platforms, and attach a reason to every flag.",
+      sys: "<strong>With a baseline.</strong> " + reveal,
     };
+
+    const setView = (sys, html) => {
+      fig.classList.toggle("is-revealed", sys);
+      fig.classList.toggle("is-found", sys);
+      buttons.forEach((b) => {
+        const on = (b.dataset.view === "sys") === sys;
+        b.classList.toggle("is-selected", on);
+        b.setAttribute("aria-pressed", String(on));
+      });
+      status.innerHTML = html;
+    };
+
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
         const sys = button.dataset.view === "sys";
-        fig.classList.toggle("is-revealed", sys);
-        fig.classList.toggle("is-found", sys);
-        buttons.forEach((b) => {
-          const on = b === button;
-          b.classList.toggle("is-selected", on);
-          b.setAttribute("aria-pressed", String(on));
-        });
-        status.innerHTML = copy[sys ? "sys" : "eye"];
+        setView(sys, copy[sys ? "sys" : "eye"]);
       });
     });
     status.innerHTML = copy.eye;
+
+    // Click a month: one invisible column per point, using the chart's own coordinates
+    if (!svg || !line || !flag) return;
+    const xs = [...line.getAttribute("d").matchAll(/[ML](\d+),\d+/g)].map((m) => Number(m[1]));
+    const bad = xs.indexOf(Number(flag.getAttribute("cx")));
+    if (bad < 0) return;
+    const half = (xs[1] - xs[0]) / 2;
+    const picks = document.createElementNS(SVG_NS, "g");
+    picks.setAttribute("aria-hidden", "true");
+    xs.forEach((x, i) => {
+      const col = document.createElementNS(SVG_NS, "rect");
+      col.setAttribute("class", "hero-chart__pick");
+      col.setAttribute("x", x - half);
+      col.setAttribute("y", 60);
+      col.setAttribute("width", half * 2);
+      col.setAttribute("height", 190);
+      const tip = document.createElementNS(SVG_NS, "title");
+      tip.textContent = `Month ${i + 1}`;
+      col.append(tip);
+      col.addEventListener("click", () => {
+        if (fig.classList.contains("is-found")) return;
+        if (i === bad) {
+          setView(true, "<strong>You caught it.</strong> " + reveal);
+          return;
+        }
+        col.classList.add("is-miss");
+        setTimeout(() => col.classList.remove("is-miss"), 900);
+        status.innerHTML = `<strong>Month ${i + 1} sits inside its normal range.</strong> Look again, or switch on the baseline.`;
+      });
+      picks.append(col);
+    });
+    svg.append(picks);
   }
 
   // Snapshot: numbers count up once, when they first come into view
@@ -516,6 +560,57 @@
     select(0);
   }
 
+  // Off the clock: tiles link to the full photo; with script they open in a lightbox instead
+
+  function initGallery() {
+    const links = $$(".gallery__link");
+    if (!links.length || typeof HTMLDialogElement === "undefined") return;
+
+    const box = document.createElement("dialog");
+    box.className = "lightbox";
+    box.setAttribute("aria-label", "Photo viewer");
+    box.innerHTML =
+      '<div class="lightbox__stage">' +
+      '<figure class="lightbox__figure"><img class="lightbox__img" alt=""><figcaption class="lightbox__cap"></figcaption></figure>' +
+      '<button class="lightbox__btn lightbox__btn--close" type="button" aria-label="Close">\u00d7</button>' +
+      '<button class="lightbox__btn lightbox__btn--prev" type="button" aria-label="Previous photo">\u2039</button>' +
+      '<button class="lightbox__btn lightbox__btn--next" type="button" aria-label="Next photo">\u203a</button>' +
+      "</div>";
+    document.body.append(box);
+
+    const img = $(".lightbox__img", box);
+    const cap = $(".lightbox__cap", box);
+    let current = 0;
+
+    const show = (i) => {
+      current = (i + links.length) % links.length;
+      const link = links[current];
+      const thumb = $("img", link);
+      img.src = link.dataset.fullWebp || link.href;
+      img.alt = thumb ? thumb.alt : "";
+      cap.textContent = $(".gallery__cap", link).textContent;
+    };
+
+    links.forEach((link, i) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        show(i);
+        box.showModal();
+      });
+    });
+
+    $(".lightbox__btn--close", box).addEventListener("click", () => box.close());
+    $(".lightbox__btn--prev", box).addEventListener("click", () => show(current - 1));
+    $(".lightbox__btn--next", box).addEventListener("click", () => show(current + 1));
+    box.addEventListener("click", (e) => {
+      if (e.target === box || e.target.classList.contains("lightbox__stage")) box.close();
+    });
+    box.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") show(current - 1);
+      if (e.key === "ArrowRight") show(current + 1);
+    });
+  }
+
   initProgress();
   initNav();
   initHeroStage();
@@ -529,4 +624,5 @@
   initTilt();
   initPortraitSwap();
   initPillars();
+  initGallery();
 })();

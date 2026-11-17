@@ -3935,3 +3935,222 @@ button {
   font-size: 0.6rem;
   line-height: 1.08;
 }
+
+/* ---- Off the clock: square photo grid and lightbox ---- */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.5rem, 1.4vw, 0.9rem);
+  margin: 2.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery__link {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--grid);
+  box-shadow: var(--shadow);
+}
+
+.gallery__link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery__cap {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 1.6rem 0.8rem 0.65rem;
+  background: linear-gradient(to top, rgba(18, 29, 48, 0.78), rgba(18, 29, 48, 0));
+  color: #fff;
+  font-size: var(--step--1);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.gallery__link:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 3px;
+}
+
+.gallery__note {
+  margin-top: 1rem;
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gallery__link img { transition: transform 0.5s var(--ease); }
+  .gallery__link:hover img { transform: scale(1.04); }
+}
+
+@media (max-width: 52rem) {
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+.lightbox {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+}
+
+.lightbox::backdrop { background: rgba(18, 29, 48, 0.92); }
+
+.lightbox__stage {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 3.5rem 1rem 3rem;
+}
+
+.lightbox__figure { margin: 0; text-align: center; }
+
+.lightbox__img {
+  display: block;
+  max-width: min(100%, 92vw);
+  max-height: calc(100vh - 8rem);
+  margin-inline: auto;
+  border-radius: var(--radius);
+  object-fit: contain;
+}
+
+.lightbox__cap { margin-top: 0.75rem; font-size: var(--step--1); color: var(--night-soft); }
+
+.lightbox__btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--night-line);
+  border-radius: 50%;
+  background: var(--night-raised);
+  color: #fff;
+  font: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__btn:hover { background: var(--signal); }
+.lightbox__btn:focus-visible { outline: 3px solid var(--band); outline-offset: 2px; }
+.lightbox__btn--close { top: 0.9rem; right: 0.9rem; }
+.lightbox__btn--prev { left: 0.9rem; top: 50%; transform: translateY(-50%); }
+.lightbox__btn--next { right: 0.9rem; top: 50%; transform: translateY(-50%); }
+
+/* ---- Hero polish: proof strip, full-width chart, clickable months, scroll cue ---- */
+
+/* Proof strip fills the left column so it ends level with the portrait */
+.hero__proof {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: start;
+  gap: 0.4rem clamp(1rem, 2.6vw, 2.25rem);
+  margin: 0.9rem 0 0;
+  padding: 0.7rem 0 0;
+  border-top: 1px solid var(--grid);
+  list-style: none;
+}
+
+.hero__proof li { display: flex; flex-direction: column; gap: 0.05rem; }
+
+.hero__proof b {
+  font-size: var(--step-2);
+  font-weight: 650;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__proof span {
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
+/* The grid sits behind the plot only, so the caption no longer lands on grid lines */
+.hero--fit .hero-chart { background-image: none; }
+
+.hero--fit .hero-chart__plot {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: -1px -1px;
+  max-height: clamp(8rem, 21vh, 14rem);
+}
+
+.hero--fit .hero-chart__svg { max-height: clamp(8rem, 21vh, 14rem); }
+
+/* Caption: full width, two lines reserved so revealing the answer doesn't shift the page */
+.js .hero--fit .hero-chart__caption {
+  max-width: none;
+  min-height: 2.9em;
+  margin-top: 0.5rem;
+}
+
+.game__more {
+  margin-left: 0.25rem;
+  color: var(--signal);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+/* Clickable months: one transparent column per data point */
+.hero-chart__pick {
+  fill: transparent;
+  cursor: pointer;
+  transition: fill 0.2s ease;
+}
+
+.hero-chart__pick:hover { fill: rgba(27, 42, 65, 0.07); }
+.hero-chart__pick.is-miss { fill: rgba(194, 37, 92, 0.16); }
+.hero-chart.is-found .hero-chart__pick { pointer-events: none; }
+
+/* Scroll cue and the off-the-clock teaser */
+.hero__cue {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.hero__cue a { color: var(--ink-soft); text-decoration: none; }
+.hero__cue a:hover { color: var(--signal); }
+.hero__cue-arrow { display: inline-block; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__cue-arrow { animation: hero-cue-bob 1.6s ease-in-out infinite; }
+}
+
+@keyframes hero-cue-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(0.25rem); }
+}
+
+@media (max-width: 52rem) {
+  .hero__proof { grid-template-columns: repeat(2, auto); }
+  .hero__cue { justify-content: flex-start; }
+}
+
+/* Balance the two hero columns: a slightly larger portrait, a chart that reaches the edges */
+.hero--fit .portrait { width: clamp(8.5rem, 14vw, 12.5rem); }
+.hero--fit .hero-chart__plot,
+.hero--fit .hero-chart__svg { max-height: clamp(8rem, 22vh, 14rem); }
+.js .hero--fit .hero-chart__caption { min-height: 2.4em; margin-top: 0.35rem; }
