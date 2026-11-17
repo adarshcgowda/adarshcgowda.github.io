@@ -41,6 +41,77 @@
     sections.forEach((s) => observer.observe(s));
   }
 
+  // Prologue: magnetic words + traveler on the lead chart (replaces the mini trend)
+
+  function initHeroStage() {
+    const hero = $("[data-hero]");
+    if (!hero) return;
+    const chart = $("[data-game]", hero);
+    const line = $("[data-trend-line]", hero);
+    const dot = $("[data-trend-dot]", hero);
+
+    const stage = () => hero.classList.add("is-staged");
+
+    if (reduceMotion) {
+      stage();
+      hero.classList.add("is-flagged");
+      if (chart) {
+        chart.classList.add("is-revealed", "is-found");
+      }
+      return;
+    }
+
+    // Wait one frame so the scattered/hidden state paints first
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      stage();
+      if (!line || !dot || typeof line.getTotalLength !== "function") {
+        setTimeout(() => hero.classList.add("is-flagged"), 1600);
+        return;
+      }
+
+      const total = line.getTotalLength();
+      // Month 19 / the dip is near x=740 on the 1000-wide path
+      const flagAt = 0.72;
+      const duration = 2200;
+      const delay = 450;
+      const start = performance.now() + delay;
+      let flagged = false;
+      let started = false;
+
+      const place = (t) => {
+        const p = line.getPointAtLength(total * Math.max(0, Math.min(1, t)));
+        dot.setAttribute("cx", p.x.toFixed(2));
+        dot.setAttribute("cy", p.y.toFixed(2));
+      };
+      place(0);
+
+      const tick = (now) => {
+        if (now < start) {
+          requestAnimationFrame(tick);
+          return;
+        }
+        if (!started) {
+          started = true;
+          dot.style.opacity = "1";
+        }
+        const u = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - u, 3);
+        place(eased);
+        if (!flagged && eased >= flagAt) {
+          flagged = true;
+          hero.classList.add("is-flagged");
+          dot.style.fill = "var(--signal)";
+        }
+        if (u < 1) requestAnimationFrame(tick);
+        else {
+          place(1);
+          dot.style.opacity = "0";
+        }
+      };
+      requestAnimationFrame(tick);
+    }));
+  }
+
   // Prologue: the same line, by eye and against its own baseline
 
   function initGame() {
@@ -447,6 +518,7 @@
 
   initProgress();
   initNav();
+  initHeroStage();
   initGame();
   initCounters();
   initJourney();
