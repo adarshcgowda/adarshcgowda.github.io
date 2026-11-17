@@ -13,10 +13,10 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B2A41'/%3E%3Cpath d='M5 22 L11 18 L16 20 L21 13 L27 10' fill='none' stroke='%23BFD7EA' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='25' r='3' fill='%23E0457B'/%3E%3C/svg%3E">
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261117c">
+  <link rel="stylesheet" href="styles.css?v=20261118a">
   <!-- Interactive layers switch on only when the script can run; without it every section reads as a plain page -->
   <script>document.documentElement.classList.add("js");</script>
-  <script src="script.js?v=20261117c" defer></script>
+  <script src="script.js?v=20261118a" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -86,23 +86,18 @@
             </ul>
           </div>
 
-          <figure class="portrait" data-tilt data-front="pro" data-enter style="--d:1">
-            <button class="portrait__swap" type="button" data-swap aria-pressed="false" aria-label="Swap photo: show the graduation portrait">
-              <span class="portrait__card portrait__card--pro">
-                <picture>
-                  <source media="(max-width: 46rem)" srcset="assets/portrait.webp" type="image/webp">
-                  <source media="(max-width: 46rem)" srcset="assets/portrait.jpg">
-                  <source srcset="assets/portrait-full.webp" type="image/webp">
-                  <img class="portrait__img" src="assets/portrait-full.jpg" width="600" height="1152" alt="Adarsh Chikkaswamygowda in a navy suit and tie" fetchpriority="high">
-                </picture>
-              </span>
-              <span class="portrait__card portrait__card--grad">
-                <img class="portrait__img" src="assets/portrait-graduation.jpg" width="800" height="1066" loading="lazy" alt="Adarsh Chikkaswamygowda in a graduation gown and cap">
-              </span>
-            </button>
-            <span class="portrait__glare" aria-hidden="true"></span>
-            <figcaption class="portrait__tag"><span class="portrait__dot" aria-hidden="true"></span>Open to senior analyst roles</figcaption>
-          </figure>
+          <div class="hero-globe" data-enter style="--d:1">
+            <div class="stage-me">
+              <span class="stage-me__ring" aria-hidden="true"></span>
+              <picture><source srcset="assets/portrait-cutout.webp" type="image/webp"><img src="assets/portrait-cutout.png" width="600" height="1152" alt="Adarsh standing in a navy suit, light blue shirt and navy tie, hands in pockets" fetchpriority="high"></picture>
+              <span class="stage-chip stage-chip--a">Senior Data Analyst</span>
+              <span class="stage-chip stage-chip--b">Uber Eats · Bangalore</span>
+              <span class="stage-chip stage-chip--c">Metric trust, since 2019</span>
+            </div>
+            <div class="who-pill">
+              <div><span>Open to senior analyst roles</span><small>India and Europe, including relocation</small></div>
+            </div>
+          </div>
         </div>
 
         <figure class="hero-chart hero-chart--lead" data-game>
@@ -1097,7 +1092,7 @@
                 <source srcset="assets/gallery/01-merlion-800.webp" type="image/webp">
                 <img src="assets/gallery/01-merlion-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh in a light blue shirt and sunglasses in front of the Merlion fountain in Singapore">
               </picture>
-              <span class="gallery__cap">Singapore</span>
+              <span class="gallery__cap">Singapore, the Merlion</span>
             </a>
           </li>
           <li class="gallery__item">
@@ -1106,7 +1101,7 @@
                 <source srcset="assets/gallery/02-whale-shark-800.webp" type="image/webp">
                 <img src="assets/gallery/02-whale-shark-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh snorkelling in open blue water with a whale shark swimming behind him">
               </picture>
-              <span class="gallery__cap">Swimming with a whale shark</span>
+              <span class="gallery__cap">Swimming with a whale shark · Oslob, Philippines</span>
             </a>
           </li>
           <li class="gallery__item">
@@ -1115,7 +1110,7 @@
                 <source srcset="assets/gallery/03-atv-800.webp" type="image/webp">
                 <img src="assets/gallery/03-atv-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh in a helmet riding an ATV through a muddy puddle, mud spraying behind the wheel, with jungle behind">
               </picture>
-              <span class="gallery__cap">ATV through the mud</span>
+              <span class="gallery__cap">ATV through the mud · Vietnam</span>
             </a>
           </li>
           <li class="gallery__item">
@@ -1124,7 +1119,7 @@
                 <source srcset="assets/gallery/04-bungee-800.webp" type="image/webp">
                 <img src="assets/gallery/04-bungee-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh hanging upside down on a bungee cord, the valley a blur of speed behind him">
               </picture>
-              <span class="gallery__cap">Bungee, upside down</span>
+              <span class="gallery__cap">Bungee, upside down · Rishikesh</span>
             </a>
           </li>
           <li class="gallery__item">
@@ -1133,7 +1128,7 @@
                 <source srcset="assets/gallery/05-scuba-800.webp" type="image/webp">
                 <img src="assets/gallery/05-scuba-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh scuba diving over a coral reef, one arm stretched out toward a school of fish">
               </picture>
-              <span class="gallery__cap">Scuba diving</span>
+              <span class="gallery__cap">Scuba diving · Thailand</span>
             </a>
           </li>
           <li class="gallery__item">
@@ -1142,7 +1137,7 @@
                 <source srcset="assets/gallery/06-river-800.webp" type="image/webp">
                 <img src="assets/gallery/06-river-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh mid-flip jumping from a raft into a green river, with kayaks and forested hills behind">
               </picture>
-              <span class="gallery__cap">River jump</span>
+              <span class="gallery__cap">River jump · Lonavala</span>
             </a>
           </li>
           <li class="gallery__item">
@@ -1151,7 +1146,7 @@
                 <source srcset="assets/gallery/07-jetski-800.webp" type="image/webp">
                 <img src="assets/gallery/07-jetski-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh in an orange life jacket riding a jet ski, a white wake behind him and a pier in the distance">
               </picture>
-              <span class="gallery__cap">Jet ski</span>
+              <span class="gallery__cap">Jet ski · Bangkok</span>
             </a>
           </li>
           <li class="gallery__item">
@@ -1160,7 +1155,7 @@
                 <source srcset="assets/gallery/08-bungee-dive-800.webp" type="image/webp">
                 <img src="assets/gallery/08-bungee-dive-800.jpg" width="800" height="800" loading="lazy" alt="Adarsh diving forward off a bungee platform, arms out, the cord trailing behind him">
               </picture>
-              <span class="gallery__cap">Bungee, the leap</span>
+              <span class="gallery__cap">Bungee, the leap · Rishikesh</span>
             </a>
           </li>
         </ul>
