@@ -13,6 +13,8 @@ assets/fonts/instrument-sans-latin.woff2   only font (Instrument Sans, SIL OFL)
 
 Total weight is about 90 KB plus the resume PDF (budget: under 300 KB).
 
+Project history, decisions and open to-dos: [docs/SESSION_LOG.md](docs/SESSION_LOG.md).
+
 ## Preview
 
 Open `index.html` in a browser, or run `python3 -m http.server 8000` in this folder
