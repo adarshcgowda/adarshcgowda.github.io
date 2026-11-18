@@ -12,11 +12,12 @@
   <meta property="og:image" content="https://adarshcgowda.github.io/assets/portrait.jpg">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B2A41'/%3E%3Cpath d='M5 22 L11 18 L16 20 L21 13 L27 10' fill='none' stroke='%23BFD7EA' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='25' r='3' fill='%23E0457B'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/portrait-cutout.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261118a">
+  <link rel="stylesheet" href="styles.css?v=20261118b">
   <!-- Interactive layers switch on only when the script can run; without it every section reads as a plain page -->
   <script>document.documentElement.classList.add("js");</script>
-  <script src="script.js?v=20261118a" defer></script>
+  <script src="script.js?v=20261118b" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -89,7 +90,11 @@
           <div class="hero-globe" data-enter style="--d:1">
             <div class="stage-me">
               <span class="stage-me__ring" aria-hidden="true"></span>
-              <picture><source srcset="assets/portrait-cutout.webp" type="image/webp"><img src="assets/portrait-cutout.png" width="600" height="1152" alt="Adarsh standing in a navy suit, light blue shirt and navy tie, hands in pockets" fetchpriority="high"></picture>
+              <picture>
+                <source srcset="assets/portrait-cutout.avif" type="image/avif">
+                <source srcset="assets/portrait-cutout.webp" type="image/webp">
+                <img src="assets/portrait-cutout.png" width="480" height="922" alt="Adarsh standing in a navy suit, light blue shirt and navy tie, hands in pockets" fetchpriority="high" decoding="async">
+              </picture>
               <span class="stage-chip stage-chip--a">Senior Data Analyst</span>
               <span class="stage-chip stage-chip--b">Uber Eats · Bangalore</span>
               <span class="stage-chip stage-chip--c">Metric trust, since 2019</span>
@@ -423,7 +428,10 @@
                 <h3 class="chapter__title">Berlin <span class="chapter__role">Master’s in Technology Management, SRH University</span></h3>
                 <p>I moved to Germany to study AI, data analysis and programming in R and Python, and graduated with a 1.9.</p>
                 <figure class="chapter__photo">
-                  <img src="assets/srh-graduation.jpg" width="900" height="872" loading="lazy" alt="A row of SRH University master’s graduates in black gowns and grey stoles, smiling and holding red certificate folders on stage">
+                  <picture>
+                    <source srcset="assets/srh-graduation.webp" type="image/webp">
+                    <img src="assets/srh-graduation.jpg" width="720" height="698" loading="lazy" decoding="async" alt="A row of SRH University master’s graduates in black gowns and grey stoles, smiling and holding red certificate folders on stage">
+                  </picture>
                   <figcaption>Graduation day, SRH University</figcaption>
                 </figure>
               </div>
@@ -438,7 +446,10 @@
                   <li>Pricing work that helped improve sales</li>
                 </ul>
                 <figure class="chapter__photo chapter__photo--pro">
-                  <img src="assets/zf-hannover.jpg" width="640" height="868" loading="lazy" alt="Adarsh outside the ZF Group office in Hannover, with the ZF logo on the roof behind him">
+                  <picture>
+                    <source srcset="assets/zf-hannover.webp" type="image/webp">
+                    <img src="assets/zf-hannover.jpg" width="640" height="868" loading="lazy" decoding="async" alt="Adarsh outside the ZF Group office in Hannover, with the ZF logo on the roof behind him">
+                  </picture>
                   <figcaption>On site at ZF Group, Hannover</figcaption>
                 </figure>
               </div>
@@ -482,7 +493,10 @@
                   <li><a href="#recognition">Customer Champion award</a></li>
                 </ul>
                 <figure class="chapter__photo chapter__photo--pro">
-                  <img src="assets/uber-office.jpg" width="720" height="882" loading="lazy" alt="Adarsh standing in front of the Uber sign in the office lobby, in a black shirt and grey trousers with an ID lanyard">
+                  <picture>
+                    <source srcset="assets/uber-office.webp" type="image/webp">
+                    <img src="assets/uber-office.jpg" width="720" height="882" loading="lazy" decoding="async" alt="Adarsh standing in front of the Uber sign in the office lobby, in a black shirt and grey trousers with an ID lanyard">
+                  </picture>
                   <figcaption>At the Uber office</figcaption>
                 </figure>
               </div>

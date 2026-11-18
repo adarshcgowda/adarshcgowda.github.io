@@ -1294,6 +1294,18 @@ button {
 
 .section {
   padding-top: var(--section-space);
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
+.journey,
+.gallery,
+.recognition,
+.speaking,
+.projects,
+.contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 .section__title {
@@ -4275,7 +4287,7 @@ body::before {
 .stage-me::before { content: ""; position: absolute; inset: -6% -10% 4%; z-index: -2; background: radial-gradient(closest-side, rgba(59, 130, 246, 0.42), rgba(25, 227, 193, 0.12) 60%, transparent 72%); }
 .stage-me__ring { position: absolute; left: 50%; bottom: 0.2rem; width: 92%; height: 2.6rem; transform: translateX(-50%); z-index: -1; border-radius: 50%; border: 1.5px solid rgba(25, 227, 193, 0.7); background: radial-gradient(closest-side, rgba(25, 227, 193, 0.28), transparent 75%); box-shadow: 0 0 26px rgba(25, 227, 193, 0.4), inset 0 0 18px rgba(25, 227, 193, 0.25); }
 .stage-me picture { display: contents; }
-.stage-me img { height: 100%; width: auto; max-width: 100%; min-height: 0; aspect-ratio: 600 / 1152; object-fit: contain; filter: drop-shadow(0 0 1px rgba(160, 220, 255, 0.85)) drop-shadow(0 14px 22px rgba(0, 0, 0, 0.55)); }
+.stage-me img { height: 100%; width: auto; max-width: 100%; min-height: 0; aspect-ratio: 480 / 922; object-fit: contain; filter: drop-shadow(0 0 1px rgba(160, 220, 255, 0.85)) drop-shadow(0 14px 22px rgba(0, 0, 0, 0.55)); }
 .stage-chip { position: absolute; z-index: 2; padding: 0.3rem 0.65rem; border-radius: 999px; border: 1px solid rgba(120, 170, 255, 0.35); background: rgba(10, 20, 42, 0.78); backdrop-filter: blur(6px); color: #dbe6fb; font-size: 0.72rem; font-weight: 600; white-space: nowrap; box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.8); }
 .stage-chip::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 0.4rem; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); }
 .stage-chip--a { top: 12%; left: -6%; }
