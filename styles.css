@@ -4461,3 +4461,26 @@ body::before {
   .sample__shot, .sample__opt { transition: none; }
   .sample__dialog[open] { animation: none; }
 }
+
+/* Samples grid: two columns, compact cards. Placeholder cards (.sample--soon) are static until a real project replaces them. */
+.samples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.75rem; margin-top: 1.5rem; }
+.samples .sample { margin-top: 0; display: flex; flex-direction: column; min-width: 0; }
+.samples .sample__shot { padding: clamp(0.9rem, 2.2vw, 1.5rem) clamp(0.8rem, 2.5vw, 2rem) 0; }
+.samples .sample__chip { padding: 0.5rem 0.85rem 0.5rem 0.7rem; font-size: var(--step--1); }
+.samples .sample__go { display: none; }
+.samples .sample__copy { grid-template-columns: 1fr; gap: 0.6rem; margin-top: 1rem; flex: 1; align-content: space-between; }
+.samples .sample__copy .project__tools { text-align: left; }
+.samples .feature__lede { font-size: var(--step--1); }
+
+.sample__shot--soon { cursor: default; background: repeating-linear-gradient(135deg, #0a1426 0 28px, #0c1a30 28px 56px); }
+.sample__shot--soon:hover { transform: none; border-color: var(--night-line); box-shadow: none; }
+.laptop__screen--soon { background: #0b1220; }
+.skel { position: absolute; inset: 14% 8% 8%; display: flex; align-items: flex-end; gap: 4%; }
+.skel::before { content: ""; position: absolute; left: 0; top: -9%; width: 38%; height: 6%; border-radius: 99px; background: #1b2740; }
+.skel i { flex: 1; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, #1d2c48, #14203a); }
+.skel i:nth-child(1) { height: 38%; } .skel i:nth-child(2) { height: 62%; } .skel i:nth-child(3) { height: 48%; }
+.skel i:nth-child(4) { height: 80%; } .skel i:nth-child(5) { height: 56%; } .skel i:nth-child(6) { height: 70%; }
+.sample__chip--soon { color: #44506a; }
+.sample__dot--soon { background: #8a93a6; box-shadow: 0 0 0 4px rgba(138, 147, 166, 0.25); }
+
+@media (max-width: 52rem) { .samples { grid-template-columns: 1fr; } }
