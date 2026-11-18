@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Monitor · Food delivery intelligence</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap"><nav id="nav"></nav>
+<h1>Delivery monitoring</h1>
+<p class="lede">The dashboard an ops team would open every morning: are volume and speed behaving normally, and if not, where did it break? Points outside the control band are flagged, and days with no data are called out instead of silently skipped.</p>
+<div class="controls">
+  <label>City<select id="city"></select></label>
+  <label>Alert sensitivity<select id="k"><option value="2">2 sigma (more alerts)</option><option value="3" selected>3 sigma (standard)</option></select></label>
+  <label>Smoothing<select id="w"><option value="auto" selected>Auto (detect day-to-day swings)</option><option value="1">Daily</option><option value="2">2-day pooled</option></select></label>
+</div>
+<div id="alerts"></div>
+<div class="kpis" id="kpis"></div>
+<div class="grid">
+  <div class="card wide"><h3>Orders per day</h3><p>Red bars mark days with no data at all. Amber dots mark days whose volume is an outlier against the city's own history (robust z-score).</p><div id="c-orders"></div></div>
+  <div class="card"><h3>Average delivery time (control chart)</h3><p>Shaded band: 3 sigma limits for that day's order count. Dashed line: overall mean. Amber = outside the band.</p><div id="c-avg"></div></div>
+  <div class="card"><h3>Late-order rate, share over 40 min (control chart)</h3><p>P-chart limits for a proportion. A wider band means fewer orders that day.</p><div id="c-late"></div></div>
+  <div class="card wide"><h3>Month over month</h3><p>Partial months are labelled with how many days they cover. Compare per-day figures, not totals.</p><div id="mom"></div></div>
+  <div class="card"><h3>Flagged days</h3><p>Days where average time or late rate left the control band.</p><div id="flagged"></div></div>
+  <div class="card"><h3>Rider watchlist</h3><p>Riders with 30+ orders, compared on average delivery time with a robust z-score (flag above 3.5).</p><div id="riders"></div></div>
+</div>
+<h2>How to read this</h2>
+<p class="small">A control chart separates normal day-to-day noise from real change. The band is computed from the data itself, so a high-volume day gets a tight band and a low-volume day a wide one. A flagged day is a prompt to investigate, not a verdict. When "All cities" is selected, watch the city-mix note above: if the set of reporting cities changes, blended numbers move even when no city changed.</p>
+<footer id="foot"></footer></div>
+<script src="data/meta.js"></script><script src="data/monitor.js"></script><script src="assets/fdstats.js"></script><script src="assets/charts.js"></script><script src="assets/layout.js"></script><script src="assets/monitor.js"></script>
+</body></html>

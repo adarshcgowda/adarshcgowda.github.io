@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Study · Food delivery intelligence</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap"><nav id="nav"></nav>
+<h1>What slows a delivery, and what the Bangalore restaurant market looks like</h1>
+<p class="lede">A one-off study with a point of view: which factors move delivery time, how much a model can explain, whether Bangalore is different, and how to read restaurant ratings honestly.</p>
+<div id="headline" class="kpis"></div>
+<div class="callout"><b>Read with care.</b> The delivery data behaves more like generated data than raw logs (see <a href="quality.html">Data quality</a>): effects are unusually clean and cities are almost identical. The findings demonstrate the method; they are not market facts.</div>
+
+<h2 id="sec-factors">1. What slows a delivery?</h2>
+<p class="small">Pick a factor. Left: average delivery time. Right: share of orders over 40 minutes. Bars start at zero.</p>
+<div class="tab" id="tabs"></div>
+<div class="grid"><div class="card"><h3>Average delivery time (min)</h3><div id="e-avg"></div></div><div class="card"><h3>Late rate (over 40 min)</h3><div id="e-late"></div></div></div>
+<div class="grid"><div class="card"><h3>How much of the variation does each factor explain?</h3><p>Share of the variance in delivery time explained by that factor alone (eta squared).</p><div id="eta"></div></div>
+<div class="card"><h3>Reading the effects</h3><div id="effect-notes"></div></div></div>
+
+<h2 id="sec-model">2. A model that tells us how much, in minutes</h2>
+<p class="small">Linear regression, trained on earlier orders and tested on later ones (no random shuffling, so nothing from the future leaks in). Each bar is the effect on delivery time versus the reference level, with a 95% interval.</p>
+<div class="kpis" id="model-kpis"></div>
+<div class="grid"><div class="card wide"><h3>Largest effects on delivery time (minutes)</h3><div id="forest"></div></div></div>
+<div class="callout" id="model-notes"></div>
+
+<h2 id="sec-bangalore">3. Is Bangalore different?</h2>
+<div class="grid"><div class="card"><h3>Bangalore against every other city</h3><div id="bvr"></div></div>
+<div class="card"><h3>Average delivery time by city (min)</h3><p>Bars start at zero on purpose: the differences are tiny.</p><div id="cities"></div></div></div>
+
+<h2 id="sec-restaurants">4. The Bangalore restaurant market</h2>
+<p class="small">8,921 listings from a 2022 snapshot. Ratings are shrunk toward the overall average in proportion to how few reviews back them, so a 5.0 from nine people does not outrank a 4.5 from nine thousand.</p>
+<div class="grid"><div class="card wide"><h3>Largest areas by number of listings</h3><div id="areas"></div></div>
+<div class="card"><h3>Cuisine mix (primary cuisine)</h3><div id="cuisines"></div></div>
+<div class="card"><h3>Price and ownership</h3><div id="price"></div></div>
+<div class="card wide"><h3>Well-rated independents with real evidence (50+ delivery reviews)</h3><p>Ranked by shrunk rating, chains excluded.</p><div id="gems"></div></div></div>
+
+<h2 id="sec-actions">5. What I would do with this</h2>
+<div id="recs"></div>
+<footer id="foot"></footer></div>
+<script src="data/meta.js"></script><script src="data/study.js"></script><script src="data/quality.js"></script><script src="assets/fdstats.js"></script><script src="assets/charts.js"></script><script src="assets/layout.js"></script><script src="assets/study.js"></script>
+</body></html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Food delivery intelligence</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap"><nav id="nav"></nav>
+<h1>Food delivery intelligence: from messy data to decisions</h1>
+<div class="kpis" id="kpis"></div>
+
+<h2>How it was built</h2>
+<div class="steps">
+  <div class="step"><b>Source</b><p>Two public Zomato datasets. Downloaded from pinned commits and checksum-verified.</p></div>
+  <div class="step"><b>Profile</b><p>Counted what was wrong before touching anything: placeholder NaNs, impossible values, spreadsheet-mangled times.</p></div>
+  <div class="step"><b>Clean with a ledger</b><p>Every rule logs rows affected and the action taken. Flag before delete; only exact duplicates are dropped.</p></div>
+  <div class="step"><b>Model in SQL</b><p>SQLite staging and marts, tested to reconcile to the fact table.</p></div>
+  <div class="step"><b>Detect</b><p>Robust outlier scores, control charts, gap detection, missingness analysis.</p></div>
+  <div class="step"><b>Explain</b><p>Interpretable regression with a time-based split and confidence intervals.</p></div>
+  <div class="step"><b>Publish</b><p>Aggregates only. Four dashboards and a build-your-own tool, no server.</p></div>
+</div>
+
+<h2>The dashboards</h2>
+<div class="tiles">
+  <a class="tile" href="explorer.html"><div class="card"><h3>Explorer</h3><p>The interactive workspace. Cross-filter everything, drill from city to traffic to weather, grow a decomposition tree that follows the problem, zoom a treemap, and let the hot-spot finder rank the worst two-factor segments. Every view is shareable by link.</p><span class="pill good">start here</span></div></a>
+  <a class="tile" href="monitor.html"><div class="card"><h3>Monitor</h3><p>The morning-check dashboard. Control charts for speed and lateness, gap detection, month-over-month with coverage, rider watchlist. Detects the data's day-to-day swing and adjusts.</p><span class="pill good">recurring view</span></div></a>
+  <a class="tile" href="study.html"><div class="card"><h3>Study</h3><p>The one-off insight story: what slows a delivery, a model that quantifies it, whether Bangalore is different, and how to read restaurant ratings with evidence-adjusted scores.</p><span class="pill good">one-time analysis</span></div></a>
+  <a class="tile" href="quality.html"><div class="card"><h3>Data quality</h3><p>The cleaning ledger, completeness before and after, informative missingness, outlier flags, coverage gaps, and the evidence that the delivery data looks generated.</p><span class="pill good">trust report</span></div></a>
+  <a class="tile" href="builder.html"><div class="card"><h3>Build your own</h3><p>Choose a dataset, group, measure, filters and chart; pin charts into a mini dashboard and download it as one HTML file. Runs entirely in your browser.</p><span class="pill good">do it yourself</span></div></a>
+</div>
+
+<h2>What this data can and cannot tell you</h2>
+<div class="callout"><b>Be sceptical, as the project itself is.</b> The delivery file has real-looking mess (spreadsheet-corrupted times, GPS zeros) but clean, near-deterministic patterns: all 22 cities average within a minute of each other, categories are evenly split, and GPS offsets take 12 values. It reads like generated data. The restaurant file shows none of those signs, though its ratings are only as good as the review counts behind them. Findings demonstrate method, and the Data quality page shows the evidence for every caveat.</div>
+<div class="callout bad"><b>Limits.</b> Delivery data covers 11 Feb to 6 Apr 2022, with a ten-day gap and different cities in February than in March and April. Only Bangalore's 36 reporting days are a like-for-like series. Neither source states a licence, so raw data is not redistributed here and the dashboards publish aggregates only.</div>
+
+<h2>Data provenance</h2>
+<div id="prov"></div>
+<h2>Skills shown</h2>
+<p class="small">Data profiling and cleaning with an audit trail · data-quality rules and anomaly detection (robust z-scores, Tukey fences, chi-square tests, control charts) · missing-data analysis · SQL modelling · hypothesis testing with confidence intervals · regression with time-based validation · shrinkage for small-sample ratings · unit-tested Python and JavaScript · dependency-free, accessible dashboards.</p>
+<footer id="foot"></footer></div>
+<script src="data/meta.js"></script><script src="data/quality.js"></script><script src="assets/fdstats.js"></script><script src="assets/charts.js"></script><script src="assets/layout.js"></script>
+<script>
+(function () {
+  const M = FD.meta, Q = FD.quality, S = FDStats, C = FDCharts;
+  document.getElementById("kpis").innerHTML = [[S.fmtInt(M.orders), "delivery orders analysed"], [S.fmtInt(M.restaurants), "Bangalore restaurant listings"], [M.dq_rules, "data-quality rules logged"], [Q.outliers.flagged, "outlier orders flagged, none removed"]]
+    .map(([v, l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join("");
+  document.getElementById("prov").innerHTML = C.table(["File", "Origin", "Pinned source and checksum"], M.sources.map((s) => ({ cells: [C.esc(s.file), C.esc(s.origin), `<a class="mono" href="${C.esc(s.url)}">${C.esc(s.url.replace(/^https:\/\/raw.githubusercontent.com\//, ""))}</a><br><span class="mono">sha256 ${s.sha256}</span>`] })), { left: [0, 1, 2] }) + `<p class="small">${C.esc(M.licence)}</p>`;
+})();
+</script></body></html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data quality · Food delivery intelligence</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap"><nav id="nav"></nav>
+<h1>Data quality and anomaly report</h1>
+<p class="lede">Every rule the pipeline applied, how many rows it touched, and what it did about it. Nothing is dropped silently: bad values become NULL, odd values are flagged, and the evidence for each decision is on this page.</p>
+<div class="kpis" id="kpis"></div>
+<div id="verdict"></div>
+
+<h2 id="sec-ledger">1. The cleaning ledger</h2>
+<p class="small">Left stripe: red error, amber warning, grey info, teal check passed. Filter by severity.</p>
+<div class="tab" id="sev"></div><div id="ledger"></div>
+
+<h2 id="sec-completeness">2. Completeness: before and after</h2>
+<div class="grid"><div class="card wide"><div id="complete"></div></div></div>
+<div class="grid"><div class="card wide"><h3>Spreadsheet damage found in the time columns</h3><div id="excel"></div></div>
+<div class="card wide"><h3 id="sec-missing">Is missing data random?</h3><p>Average delivery time when a field is missing versus present. If the gap is large the blank itself carries information, so filling it in would hide a signal.</p><div id="mnar"></div></div></div>
+
+<h2 id="sec-real">3. Does it look real?</h2>
+<div class="grid"><div class="card"><h3>Suspiciously even categories</h3><p>Chi-square test against "every level equally likely" at the 5% level. Real categories are almost never this even.</p><div id="even"></div></div>
+<div class="card"><h3>What explains delivery time</h3><p>Variance explained by each factor. The 22 cities explain 0.06%: they behave identically.</p><div id="eta"></div></div>
+<div class="card wide"><h3>GPS coordinates</h3><div id="coords"></div></div></div>
+
+<h2 id="sec-outliers">4. Outliers</h2>
+<div class="grid"><div class="card wide"><h3>Delivery time distribution with flagged orders</h3><p id="o-note"></p><div id="hist"></div></div>
+<div class="card"><h3>Where the flags are</h3><div id="o-seg"></div></div><div class="card"><h3>Most extreme orders</h3><div id="o-top"></div></div></div>
+
+<h2 id="sec-coverage">5. Coverage over time</h2>
+<div class="grid"><div class="card wide"><h3>Orders per day across the window</h3><p id="cal-note"></p><div id="cal"></div></div>
+<div class="card wide"><h3>Orders per city per week</h3><p>Darker teal means more orders. Blank cells are weeks with no orders for that city.</p><div id="calm"></div></div></div>
+
+<h2 id="sec-restaurants">6. Restaurant listings</h2>
+<div class="grid"><div class="card"><h3>How much evidence sits behind a rating?</h3><p>Listings by number of delivery reviews.</p><div id="r-ev"></div></div>
+<div class="card"><h3>Cost for two (Rs), 100-rupee bins</h3><p id="r-note"></p><div id="r-cost"></div></div>
+<div class="card wide"><h3>Restaurant rules</h3><div id="r-ledger"></div></div></div>
+<footer id="foot"></footer></div>
+<script src="data/meta.js"></script><script src="data/quality.js"></script><script src="assets/fdstats.js"></script><script src="assets/charts.js"></script><script src="assets/layout.js"></script><script src="assets/quality.js"></script>
+</body></html>

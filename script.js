@@ -611,6 +611,25 @@
     });
   }
 
+  // Dashboard sample: the card is a plain link; with script it opens a chooser (dashboard in a new tab, or the repository).
+  function initSamples() {
+    $$("[data-sample]").forEach((card) => {
+      const box = $(".sample__dialog", card), open = $("[data-sample-open]", card);
+      if (!box || !open) return;
+      // Opened straight from disk, the dashboard sits next to this folder; once published, the hosted address is used.
+      const url = location.protocol === "file:" && card.dataset.dashboardLocal ? card.dataset.dashboardLocal : card.dataset.dashboardUrl;
+      $("[data-sample-dashboard]", card).href = url;
+      $("[data-sample-repo]", card).href = card.dataset.repoUrl;
+      open.href = url;
+      if (typeof HTMLDialogElement === "undefined") return;
+      open.addEventListener("click", (e) => { e.preventDefault(); box.showModal(); });
+      $("[data-sample-close]", box).addEventListener("click", () => box.close());
+      box.addEventListener("click", (e) => { if (e.target === box) box.close(); });
+      box.addEventListener("close", () => open.focus());
+      $$(".sample__opt", box).forEach((a) => a.addEventListener("click", () => box.close()));
+    });
+  }
+
   initProgress();
   initNav();
   initHeroStage();
@@ -625,4 +644,5 @@
   initPortraitSwap();
   initPillars();
   initGallery();
+  initSamples();
 })();

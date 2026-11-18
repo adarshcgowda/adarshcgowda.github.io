@@ -22,6 +22,7 @@ and visit http://localhost:8000.
 
 ## Before sharing (pre-launch checklist)
 
+- [ ] **Food delivery intelligence sample (`#food-delivery`)**: the dashboard is a built copy in `food-delivery/` (source and tests live in the separate `food-delivery-intelligence` project; re-copy its `docs/` folder after changes). Once the project repo is on GitHub, set `data-repo-url` on the `data-sample` article in `index.html` (it is a placeholder until then).
 - [x] Projects in `#projects` are tagged "In progress"; add a link and remove the tag as each one ships
 - [x] Add the resume PDF at `assets/Adarsh_Chikkaswamygowda_Resume.pdf`
 - [x] Remove the `<meta name="robots" content="noindex, nofollow">` line in `index.html`
