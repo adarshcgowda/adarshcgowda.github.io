@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Segments - Customer retention and lifetime value</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap">
+<nav id="nav"></nav>
+<h1>Customer segments</h1>
+<p class="lede">Every customer is scored on how recently they bought, how often, and how much. The scores become eight named segments. The test that matters: do the segments predict what customers do <em>next</em>? Pick a date and see what really happened afterwards.</p>
+<div class="sticky"><div class="controls" id="controls"></div></div>
+<div id="kpis" class="kpis"></div>
+
+<h2>1. The segments, and what they did next</h2>
+<div class="card wide"><div id="table"></div></div>
+<div id="verdict"></div>
+<div class="grid"><div class="card"><h3 id="act-title"></h3><div id="act"></div></div><div class="card"><h3 id="share-title"></h3><div id="share"></div></div></div>
+
+<h2>2. How customers move between segments</h2>
+<div class="card wide"><div class="controls"><label>Compare with<select id="from"></select></label></div><p id="mig-note"></p><div id="mig"></div></div>
+
+<h2>3. How the scores work</h2>
+<div class="card wide" id="rules"></div>
+<footer id="foot"></footer>
+</div>
+<script src="data/meta.js"></script><script src="data/customers.js"></script><script src="assets/charts.js"></script><script src="assets/rt.js"></script>
+<script src="assets/common.js"></script><script src="assets/layout.js"></script><script src="assets/segments.js"></script>
+</body></html>

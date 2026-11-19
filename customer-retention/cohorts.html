@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cohorts - Customer retention and lifetime value</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap">
+<nav id="nav"></nav>
+<h1>Cohorts</h1>
+<p class="lede">Group customers by the month of their first purchase, then follow each group. Each row is one cohort; each column is how many periods later. Pick what to measure and who to include.</p>
+<div class="sticky"><div class="controls" id="controls"></div></div>
+<div id="finding"></div>
+<div class="card wide"><h3 id="t-title"></h3><p id="t-sub"></p><div id="heat"></div></div>
+<div class="grid"><div class="card wide"><h3>Average across cohorts, by age</h3><p id="avg-note"></p><div id="avg"></div></div>
+<div class="card wide"><h3>Is each new cohort better or worse?</h3><p id="trend-note"></p><div id="trend"></div></div></div>
+<div class="callout"><b>Two things to keep in mind.</b> The first cohort (customers already active when the data starts) is not a real acquisition cohort, so averages leave it out unless you tick the box. And the data ends in the middle of December 2011, so only complete periods are shown: later cells are blank, not zero.</div>
+<footer id="foot"></footer>
+</div>
+<script src="data/meta.js"></script><script src="data/customers.js"></script><script src="assets/charts.js"></script><script src="assets/rt.js"></script>
+<script src="assets/common.js"></script><script src="assets/layout.js"></script><script src="assets/cohorts.js"></script>
+</body></html>

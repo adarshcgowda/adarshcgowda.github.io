@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Customer retention and lifetime value</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap">
+<nav id="nav"></nav>
+<h1>Do customers come back?</h1>
+<p class="lede">Two years of real transactions from a UK online gift retailer, turned into answers a business can act on: how many customers return, which ones are worth keeping, and what a new customer is likely to be worth. Everything is computed live in your browser.</p>
+<div class="kpis" id="kpis"></div>
+
+<section class="story"><h2><span class="n">1</span>New customers and returning customers</h2>
+<p id="m-note"></p><div class="card wide" id="monthly"></div></section>
+
+<section class="story"><h2><span class="n">2</span>Does buying again get easier?</h2>
+<div class="controls"><label>Came back within<select id="h"><option value="30">30 days</option><option value="90" selected>90 days</option><option value="180">180 days</option></select></label>
+<label>Customers<select id="f"></select></label></div>
+<p id="r-note"></p><div class="card wide" id="repeat"></div></section>
+
+<section class="story"><h2><span class="n">3</span>A few customers carry the business</h2>
+<div class="grid"><div class="card"><h3>Share of revenue by customer group</h3><div id="conc"></div></div>
+<div class="card"><h3>Who pays the bills</h3><div id="conc-note"></div></div></div></section>
+
+<section class="story"><h2><span class="n">4</span>Where to look next</h2>
+<div class="steps" id="next"></div>
+<div class="callout"><b>Read with care.</b> The customers here are largely wholesalers, the data starts mid-history (customers already active in December 2009 look new), and December 2011 is incomplete. The Data quality page lists every issue and what was done about it.</div></section>
+
+<footer id="foot"></footer>
+</div>
+<script src="data/meta.js"></script><script src="data/customers.js"></script><script src="data/quality.js"></script><script src="assets/charts.js"></script><script src="assets/rt.js"></script>
+<script src="assets/common.js"></script><script src="assets/layout.js"></script><script src="assets/overview.js"></script>
+</body></html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data quality - Customer retention and lifetime value</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap">
+<nav id="nav"></nav>
+<h1>Data quality and limits</h1>
+<p class="lede">What was in the raw file, what the pipeline removed and why, and the structural limits of the data that change how every result should be read.</p>
+<div class="kpis" id="kpis"></div>
+<div id="verdict"></div>
+
+<h2>1. From raw rows to analysis</h2>
+<div class="grid"><div class="card wide"><div id="funnel"></div></div></div>
+
+<h2>2. The cleaning ledger</h2>
+<p class="small">Every rule, how many rows it touched, their value in pounds where that applies, and what was done.</p>
+<div class="tab" id="sev"></div><div id="ledger"></div>
+
+<h2>3. Limits of the history</h2>
+<div class="grid"><div class="card"><h3>New customers per month</h3><p id="cens-note"></p><div id="cens"></div></div>
+<div class="card"><h3>Orders per month</h3><p id="part-note"></p><div id="part"></div></div></div>
+
+<h2>4. Who is in the data</h2>
+<div class="grid"><div class="card"><h3>Revenue by country</h3><div id="ctry"></div></div>
+<div class="card"><h3>Guest checkouts: share of merchandise revenue</h3><p id="guest-note"></p><div id="guest"></div></div></div>
+<div class="grid"><div class="card"><h3>Visits per customer</h3><p>Most customers visit once or twice; a few visit dozens of times.</p><div id="visits"></div></div>
+<div class="card"><h3>Order value</h3><p>Merchandise value of each order, in pounds. A long right tail of very large wholesale orders.</p><div id="values"></div></div></div>
+
+<footer id="foot"></footer>
+</div>
+<script src="data/meta.js"></script><script src="data/customers.js"></script><script src="data/quality.js"></script><script src="assets/charts.js"></script><script src="assets/rt.js"></script>
+<script src="assets/common.js"></script><script src="assets/layout.js"></script><script src="assets/quality.js"></script>
+</body></html>

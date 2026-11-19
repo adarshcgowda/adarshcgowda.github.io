@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Build a segment - Customer retention and lifetime value</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap">
+<nav id="nav"></nav>
+<h1>Build a segment</h1>
+<p class="lede">Define a customer group with your own rules and test it against what those customers did next. Rules look only at what was known on the snapshot date; the result shows what happened afterwards. Save segments to compare them, share a link, or export them.</p>
+<div class="card wide"><h3>Snapshot</h3><div class="controls" id="snap"></div><h3 style="margin-top:12px">Rules <span class="small">(leave blank for no limit)</span></h3><div class="controls" id="rules"></div><div class="presets" id="presets"></div></div>
+<div id="result" style="margin-top:14px"></div>
+<div class="controls" id="actions" style="margin:12px 0"></div>
+<div id="saved"></div>
+<div class="card wide" id="io" hidden><h3>Import segments</h3><p class="small">Paste exported JSON, then press Import.</p><textarea id="json" rows="6" style="width:100%"></textarea><p><button id="doimport" class="primary">Import</button> <button id="cancelimport">Cancel</button></p><p id="ioerr" class="small"></p></div>
+<footer id="foot"></footer>
+</div>
+<script src="data/meta.js"></script><script src="data/customers.js"></script><script src="assets/charts.js"></script><script src="assets/rt.js"></script>
+<script src="assets/common.js"></script><script src="assets/layout.js"></script><script src="assets/builder.js"></script>
+</body></html>

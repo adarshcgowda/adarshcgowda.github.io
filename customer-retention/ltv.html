@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lifetime value - Customer retention and lifetime value</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap">
+<nav id="nav"></nav>
+<h1>Lifetime value</h1>
+<p class="lede">What will a newly won customer be worth over their first year? The method here learns how spending usually builds up month by month, applies it to cohorts that are still young, and then checks itself against cohorts whose full year is already known.</p>
+<div class="sticky"><div class="controls" id="controls"></div></div>
+<div id="headline"></div>
+
+<h2>1. How spending builds up</h2>
+<div class="grid"><div class="card wide"><p id="f-note"></p><div id="factors"></div></div></div>
+
+<h2>2. What recent cohorts are likely to be worth</h2>
+<div class="card wide"><p id="p-note"></p><div id="proj"></div></div>
+
+<h2>3. Was the method any good? A backtest</h2>
+<div class="card wide"><p id="b-note"></p><div id="scores"></div></div>
+<div class="card wide" style="margin-top:14px"><h3>By cohort age</h3><div id="age"></div></div>
+<div class="card wide" style="margin-top:14px"><h3>By forecast date</h3><div id="origins"></div><details><summary class="small">Every forecast that was checked</summary><div id="rows"></div></details></div>
+
+<div class="callout"><b>Limits.</b> The history is only two years, so at early forecast dates the later months of a cohort's life are learned from one or two older cohorts. Forecast dates overlap, so the checks are not independent. Spending is revenue, not profit, undiscounted. The method learns spending by age, so it does not know that winter months sell more. Treat the result as a calibrated range, not a promise.</div>
+<footer id="foot"></footer>
+</div>
+<script src="data/meta.js"></script><script src="data/customers.js"></script><script src="assets/charts.js"></script><script src="assets/rt.js"></script>
+<script src="assets/common.js"></script><script src="assets/layout.js"></script><script src="assets/ltv.js"></script>
+</body></html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Method - Customer retention and lifetime value</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div class="wrap">
+<nav id="nav"></nav>
+<h1>Method</h1>
+<p class="lede">Exactly how each number on this site is calculated, how the calculations were checked, and where they stop being reliable.</p>
+
+<h2>1. Definitions</h2>
+<ul>
+<li><b>Spend</b> is merchandise revenue: quantity times price on sale lines with a real product code. Postage, fees, vouchers and manual adjustments are excluded. Cancellations are held separately and are <em>not</em> subtracted, so spend is gross.</li>
+<li><b>Visit</b>: one customer on one day. Several invoices on the same day merge into one visit (their revenue is summed), so frequency is not inflated by split orders.</li>
+<li><b>Customer</b>: an identified customer ID. Guest checkouts are excluded from every customer measure.</li>
+<li><b>Period</b>: a calendar month, or a three-month block counted from December 2009. <b>Cohort</b>: the period of a customer's first visit.</li>
+<li><b>Complete period</b>: one that ends on or before 30 November 2011. December 2011 stops on the 9th, so it never enters a cohort table.</li>
+</ul>
+
+<h2>2. Cohorts</h2>
+<p>For cohort <code>c</code> with <code>n</code> customers and <code>k</code> periods of age: <b>retention</b> is the share of the n customers with at least one visit in period c + k; <b>cumulative revenue per customer</b> is their total spend from period c to c + k, divided by n; cumulative visits likewise. Averages across cohorts are weighted by cohort size, need an age to be present in at least three cohorts, and leave out the first cohort (customers already active when the data starts) unless asked.</p>
+<div id="ex-cohort"></div>
+
+<h2>3. Customer scoring (RFM) and the forward check</h2>
+<p>At a snapshot date, each customer who has ordered by then gets <b>recency</b> (days since their last visit), <b>frequency</b> (visits so far) and <b>monetary</b> (spend so far). Recency and monetary are scored 1 to 5 by rank within that date's customers (a quintile, ties broken by customer ID so results are repeatable); frequency uses fixed bins because most customers have one or two visits. The eight segments are rules over the recency and frequency scores (listed on the <a href="segments.html">Segments</a> page).</p>
+<p><b>Is the scoring any good?</b> Scoring uses only orders on or before the snapshot. The look-ahead columns then count what each customer did in the next 30 to 180 days. If segments carried no information, every segment would show the same activity; the page reports how much they differ, and a look-ahead that runs past the end of the data is switched off rather than guessed.</p>
+
+<h2>4. Lifetime value: growth by age (chain ladder)</h2>
+<p>Let <code>C(c, k)</code> be a cohort's cumulative revenue per customer at age k. For each age step j, the <b>development factor</b> is <code>f_j = Σ C(c, j+1) / Σ C(c, j)</code> over every cohort that has been observed at age j + 1. A young cohort known up to age k is projected to age 11 (its first twelve months) as <code>C(c, k) × f_k × f_(k+1) × … × f_10</code>. This is the chain-ladder method from insurance reserving, applied to revenue.</p>
+<div id="ex-ltv"></div>
+<p><b>Backtest.</b> To test it honestly, the factors are re-learned using only data up to each past month ("forecast date", from February to October 2011), applied to every cohort then aged 4 to 11 months whose twelfth month has since happened, and compared with what really happened. Two simple baselines are scored alongside: assume no further spending, and extrapolate a straight line (<code>C(c, k) × 12 / (k + 1)</code>). Scores are mean absolute percentage error and mean signed error (bias).</p>
+
+<h2>5. How the numbers were checked</h2>
+<div id="validation"></div>
+
+<h2>6. Limits</h2>
+<ul>
+<li><b>Identified customers only.</b> Guest checkouts are 13% of merchandise revenue and are invisible to every customer measure.</li>
+<li><b>Left edge.</b> The history begins in December 2009. Anyone who bought before then and again after looks like a new customer, which inflates the earliest cohorts' size and retention.</li>
+<li><b>Short history.</b> Two years allow only a handful of full-year cohorts, so lifetime value is a twelve-month projection, not a lifetime, and the backtest rests on 44 overlapping forecasts.</li>
+<li><b>Seasonality.</b> Growth factors depend on cohort age, not calendar month. Gift-ware sells most in the autumn (see the Overview), so a cohort whose first year includes that peak may be under-predicted and one that misses it over-predicted. This was not measured separately.</li>
+<li><b>Wholesale customers.</b> The retailer sells largely to businesses. Repeat patterns, order sizes and concentration (a few accounts carry a third of revenue) differ from consumer retail.</li>
+<li><b>Revenue, not profit.</b> No costs, margins, or discounting. Returns are not netted off.</li>
+<li><b>Descriptive, not causal.</b> Segments and cohorts describe what happened. They do not show that a campaign would change it.</li>
+</ul>
+
+<h2>7. Provenance</h2>
+<div id="prov"></div>
+<footer id="foot"></footer>
+</div>
+<script src="data/meta.js"></script><script src="data/customers.js"></script><script src="assets/charts.js"></script><script src="assets/rt.js"></script>
+<script src="assets/common.js"></script><script src="assets/layout.js"></script><script src="assets/method.js"></script>
+</body></html>

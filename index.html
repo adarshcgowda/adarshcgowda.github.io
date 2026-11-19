@@ -347,23 +347,47 @@
             </dialog>
           </article>
 
-          <!-- Placeholder 2: replace the title, text and screen with the real project; copy the food-delivery card above to make it interactive. -->
-          <article class="sample sample--soon">
-            <div class="sample__shot sample__shot--soon" aria-hidden="true">
-              <span class="laptop">
-                <span class="laptop__screen laptop__screen--soon"><span class="skel"><i></i><i></i><i></i><i></i><i></i><i></i></span></span>
+          <!-- Dashboard sample. The dashboard is served from /customer-retention/ in this repo. Only data-repo-url is a placeholder, until the project repo exists on GitHub. -->
+          <article class="sample" id="customer-retention" data-sample
+            data-dashboard-url="customer-retention/index.html"
+            data-repo-url="https://github.com/adarshcgowda/customer-retention-ltv">
+            <a class="sample__shot" href="customer-retention/index.html" target="_blank" rel="noopener" data-sample-open aria-label="Customer retention and lifetime value: open the dashboard or the code">
+              <span class="laptop" aria-hidden="true">
+                <span class="laptop__screen">
+                  <picture>
+                    <source type="image/webp" srcset="assets/customer-retention-preview.webp">
+                    <img src="assets/customer-retention-preview.jpg" width="1600" height="1000" loading="lazy" decoding="async" alt="">
+                  </picture>
+                </span>
                 <span class="laptop__base"></span>
               </span>
-              <span class="sample__chip sample__chip--soon"><span class="sample__dot sample__dot--soon"></span>Coming soon</span>
-            </div>
+              <span class="sample__chip"><span class="sample__dot"></span>Interactive dashboard<span class="sample__go">Click to open</span></span>
+            </a>
+            <p class="visually-hidden">Preview of the dashboard: new and returning customers by month, a cohort retention heatmap, eight customer segments with what they did next, and a lifetime-value chart.</p>
             <div class="sample__copy">
               <div>
-                <p class="talk__meta"><span class="talk__badge talk__badge--wip">Placeholder</span> Dashboard 2</p>
-                <h3 class="feature__title">Sample dashboard 2</h3>
-                <p class="feature__lede">A space for the next interactive project: a short line on the question it answers, the data behind it and what to try first.</p>
+                <p class="talk__meta"><span class="talk__badge talk__badge--done">Dashboard</span> Independent project · public data · 5,852 customers</p>
+                <h3 class="feature__title">Customer retention and lifetime value</h3>
+                <p class="feature__lede">Two years of real orders from a UK online retailer, cleaned with an audit trail, then explored page by page: who comes back, how groups of customers behave over time, which segments predict what happens next, and what a new customer is likely to be worth. Seven pages, including a builder to test your own customer group.</p>
               </div>
-              <p class="project__tools">Tools to be added</p>
+              <p class="project__tools">SQL, Python, SQLite, JavaScript, SVG</p>
             </div>
+
+            <dialog class="sample__dialog" aria-labelledby="sample-title-retention">
+              <button class="sample__close" type="button" aria-label="Close" data-sample-close>&times;</button>
+              <p class="eyebrow">Customer retention and lifetime value</p>
+              <h3 class="sample__q" id="sample-title-retention">What would you like to see?</h3>
+              <div class="sample__options">
+                <a class="sample__opt" href="customer-retention/index.html" target="_blank" rel="noopener" autofocus data-sample-dashboard>
+                  <span class="sample__opt-title">View dashboard <span aria-hidden="true">&#8599;</span></span>
+                  <span class="sample__opt-text">The interactive dashboard, opened in a new tab. Pick a date, filter, and build your own segment.</span>
+                </a>
+                <a class="sample__opt" href="https://github.com/adarshcgowda/customer-retention-ltv" target="_blank" rel="noopener" data-sample-repo>
+                  <span class="sample__opt-title">View backend data <span aria-hidden="true">&#8599;</span></span>
+                  <span class="sample__opt-text">The clean project repository on GitHub: pipeline, SQL, tests and README.</span>
+                </a>
+              </div>
+            </dialog>
           </article>
 
           <!-- Placeholder 3: replace the title, text and screen with the real project; copy the food-delivery card above to make it interactive. -->
